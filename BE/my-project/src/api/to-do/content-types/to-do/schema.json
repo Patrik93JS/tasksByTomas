@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "to_dos",
+  "info": {
+    "singularName": "to-do",
+    "pluralName": "to-dos",
+    "displayName": "ToDo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "MustBeCompleted": {
+      "type": "datetime"
+    },
+    "Completed": {
+      "type": "boolean"
+    },
+    "to_do_group": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::to-do-group.to-do-group",
+      "inversedBy": "to_dos"
+    }
+  }
+}
