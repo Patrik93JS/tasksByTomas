@@ -1,16 +1,18 @@
-'use client'; // prettier-ignore
-// import "./globals.css";
-import { Inter } from "next/font/google";
+"use client";
 
-import { ReactNode, useState } from "react";
-import { useRouter } from "next/navigation";
-
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+import { ReactNode } from "react";
+import { SideBar } from "../components/SideBar/SideBar";
+import { TopNavigation } from "../components/TopNavigation/TopNavigation";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <>
-      <body> {children}</body>
-    </>
+    <html lang="en">
+      <body className="flex">
+        <TopNavigation />
+        <SideBar />
+        <div>{children}</div>
+      </body>
+    </html>
   );
 }
