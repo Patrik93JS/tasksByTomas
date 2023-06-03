@@ -8,10 +8,10 @@ import { TopNavigation } from "../components/TopNavigation/TopNavigation";
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="flex">
+      <body>
         <TopNavigation />
         <SideBar />
-        <div>{children}</div>
+        <div className="content-container">{children}</div>
       </body>
     </html>
   );

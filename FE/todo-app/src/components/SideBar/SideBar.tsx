@@ -1,13 +1,15 @@
 import React, { FC } from "react";
-import { BsPlus, BsCheckLg, BsCollection } from "react-icons/bs";
-import { SideBarIcon } from "./SideBarIcon";
+import { CardGroup } from "../CardGroup/CardGroup";
+import { TopNavigationIcon } from "../TopNavigation/TopNavigationIcon";
+import { BsPlus } from "react-icons/bs";
 
 export const SideBar: FC = () => {
   return (
     <div className="fixed top-0 left-0 h-screen w-16 mt-0 flex flex-col bg-myPrimary text-white shadow-lg">
-      <SideBarIcon icon={<BsPlus size="28" />} text="Add New Group" />
-      <SideBarIcon icon={<BsCheckLg size="28" />} text="Completed" />
-      <SideBarIcon icon={<BsCollection size="28" />} text="All" />
+      <CardGroup title="Ahoj" />
+      <CardGroup title="Ratratahoj" />
+      <CardGroup title="Hihihoj" />
+      <CardGroup title="Papahoj" />
     </div>
   );
 };
