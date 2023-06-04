@@ -5,7 +5,7 @@
     transition-all duration-300 scale-0 origin-left;
 }
 
-.top-navigation-icon {
+.topNavigationIcon {
   @apply relative flex items-center justify-center 
     h-12 w-12 mt-14 mb-0 mx-auto  
   bg-gray-800 hover:bg-green-600 
