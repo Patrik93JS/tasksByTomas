@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import styles from "./TopNavigation.module.css";
 
 type Props = {
   icon: ReactNode;
@@ -6,8 +7,10 @@ type Props = {
 };
 
 export const TopNavigationIcon: FC<Props> = ({ icon, text }) => (
-  <div className="top-navigation-icon-action group">
+  <div className={`${styles.topNavigationIconAction} group`}>
     {icon}
-    <span className="top-navigation-tooltip group-hover:scale-100">{text}</span>
+    <span className={`${styles.topNavigationTooltip} group-hover:scale-100`}>
+      {text}
+    </span>
   </div>
 );
