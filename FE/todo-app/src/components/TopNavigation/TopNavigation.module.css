@@ -16,7 +16,7 @@
 }
 
 .topNavigation {
-  @apply flex flex-row items-center 
+  @apply fixed flex flex-row items-center 
     bg-myPrimary 
     w-full h-16 
     ml-0 

@@ -1,7 +1,5 @@
 import React, { FC } from "react";
 import { SideBarGroup } from "./SideBarGroup";
-import { TopNavigationIcon } from "../topNavigation/TopNavigationIcon";
-import { BsPlus } from "react-icons/bs";
 
 export const SideBar: FC = () => {
   return (

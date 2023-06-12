@@ -12,16 +12,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "richtext"
     },
-    "MustBeCompleted": {
+    "mustBeCompleted": {
       "type": "datetime"
     },
-    "Completed": {
+    "completed": {
       "type": "boolean"
     },
     "to_do_group": {
