@@ -29,7 +29,6 @@ export const CreateGroupInput: FC<Props> = ({ open, closeModal }) => {
     };
     createGroup(dataInput);
     closeModal();
-    console.log("data", data);
   };
 
   return open
