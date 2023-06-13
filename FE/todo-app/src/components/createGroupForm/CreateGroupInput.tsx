@@ -4,26 +4,30 @@ import styles from "./CreateGroup.module.css";
 import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
 import { useCreateGroupMutation } from "@/store/api/groupToDoApi";
-import { ApiRequest } from "@/types/Api";
 
 type Props = {
   open: boolean;
   closeModal: () => void;
 };
 
-export type CreateGroupToDoType = ApiRequest<{
+export type CreateGroupToDoType = {
   title: string;
-}>;
+};
 
 export const CreateGroupInput: FC<Props> = ({ open, closeModal }) => {
   const { register, handleSubmit } = useForm<CreateGroupToDoType>({
-    defaultValues: { data: { title: "" } },
+    defaultValues: { title: "" },
   });
 
   const [createGroup] = useCreateGroupMutation();
 
   const onSubmit = async (data: CreateGroupToDoType) => {
-    createGroup(data);
+    const dataInput = {
+      data: {
+        title: data.title,
+      },
+    };
+    createGroup(dataInput);
     closeModal();
     console.log("data", data);
   };
@@ -47,11 +51,11 @@ export const CreateGroupInput: FC<Props> = ({ open, closeModal }) => {
                     type="text"
                     className="bg-black px-3 py-1 rounded-md text-green-500"
                     placeholder="Write a name of group"
-                    {...register("data.title")}
+                    {...register("title")}
                   />
                 </div>
                 <button className={styles.createButton} type="submit">
-                  Create!
+                  Create
                 </button>
               </form>
             </div>

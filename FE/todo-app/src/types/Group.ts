@@ -10,6 +10,7 @@ export type CreateGroupToDoResponse = ApiResponse<{
     title: string;
   };
 }>;
+
 export type GetGroupResponse = ApiResponse<{
   id: number;
   attributes: {
