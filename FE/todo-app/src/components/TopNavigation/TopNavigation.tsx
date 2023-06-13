@@ -9,18 +9,18 @@ import { CreateGroupInput } from "../createGroupForm/CreateGroupInput";
 import { useModal } from "@/hooks/useModal";
 
 export const TopNavigation: FC = () => {
-  const { open: _open, openModal, closeModal } = useModal();
+  const { isOpen, open, close } = useModal();
 
   return (
     <div className={styles.topNavigation}>
       <Title />
-      <TopNavigationIcon icon={<BsPlus size="32" />} text="Add New Group" onClick={openModal} />
+      <TopNavigationIcon icon={<BsPlus size="32" />} text="Add New Group" onClick={open} />
       <TopNavigationIcon icon={<BsCheckLg size="28" />} text="Completed" />
       <TopNavigationIcon icon={<BsCollection size="28" />} text="All" />
       <Search />
       <UserCircle />
 
-      <CreateGroupInput open={_open} closeModal={closeModal} />
+      <CreateGroupInput open={isOpen} closeModal={close} />
     </div>
   );
 };
