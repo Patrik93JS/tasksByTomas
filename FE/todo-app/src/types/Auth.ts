@@ -1,62 +1,25 @@
-// import { ApiResponse } from "./Api";
+export type RegisterInputs = {
+  username: string;
+  email: string;
+  password: string;
+};
 
-// export enum AuthForm {
-//   LOGIN,
-//   REGISTER,
-//   RESET,
-//   RESET_LOGGED_IN,
-//   COMPLETE_REGISTER,
-//   COMPLETE_RESET,
-//   SENT,
-// }
+export type LoginInputs = {
+  identifier: string;
+  password: string;
+};
 
-// export type RegisterInputs = {
-//   email: string;
-//   name: string;
-//   password: string;
-//   terms: boolean;
-// };
+export type LoginResponse = {
+  jwt: string;
+  user: {
+    id: number;
+    username: string;
+    email: string;
+  };
+};
 
-// export type CompleteRegistrationInputs = {
-//   magic: string;
-//   name: string;
-//   password: string;
-//   terms: boolean;
-// };
+export type LoginRequest = LoginInputs;
 
-// export type ResetInputs = {
-//   email: string;
-// };
+export type RegisterRequest = RegisterInputs;
 
-// export type LoginInputs = {
-//   email: string;
-//   password: string;
-// };
-
-// export type CompleteResetInputs = {
-//   magic: string;
-//   email: string;
-//   password: string;
-// };
-
-// export type LoginRequest = LoginInputs;
-
-// export type LoginResponse = ApiResponse<{
-//   token: string;
-// }>;
-
-// export type RegisterRequest = RegisterInputs;
-
-// export type CompleteRegistrationRequest = CompleteRegistrationInputs;
-
-// export type RegisterResponse = LoginResponse;
-
-// export type CompleteRegistrationResponse = LoginResponse;
-
-// export type ResetRequest = ResetInputs;
-
-// export type ResetResponse = RegisterResponse;
-
-// export type CompleteResetRequest = CompleteResetInputs;
-
-// export type CompleteResetResponse = LoginResponse;
+export type RegisterResponse = LoginResponse;

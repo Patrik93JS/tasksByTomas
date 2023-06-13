@@ -1,8 +1,4 @@
-import {
-  CreateGroupToDoRequest,
-  CreateGroupToDoResponse,
-  GetGroupResponse,
-} from "@/types/Group";
+import { CreateGroupToDoRequest, CreateGroupToDoResponse, GetGroupResponse } from "@/types/Group";
 import { appApi } from ".";
 
 export const groupApi = appApi.injectEndpoints({
@@ -14,10 +10,7 @@ export const groupApi = appApi.injectEndpoints({
       }),
       providesTags: (result) => (result ? [{ type: "Group" }] : []),
     }),
-    createGroup: builder.mutation<
-      CreateGroupToDoResponse,
-      CreateGroupToDoRequest
-    >({
+    createGroup: builder.mutation<CreateGroupToDoResponse, CreateGroupToDoRequest>({
       query: ({ ...body }) => ({
         url: "api/to-do-groups",
         method: "POST",

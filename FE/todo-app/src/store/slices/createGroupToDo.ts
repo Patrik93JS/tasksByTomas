@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type CreateGroupToDoState = {
+type CreateGroupToDo = {
   title: string;
 };
 
@@ -8,7 +8,7 @@ export const createGroupToDo = createSlice({
   name: "createGroupToDo",
   initialState: {
     title: "",
-  } as CreateGroupToDoState,
+  } as CreateGroupToDo,
   reducers: {
     setTitle: (state, action) => {
       state.title = action.payload;
