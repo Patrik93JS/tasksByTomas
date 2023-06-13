@@ -1,10 +1,10 @@
-export type RegisterInputs = {
+export type RegisterRequest = {
   username: string;
   email: string;
   password: string;
 };
 
-export type LoginInputs = {
+export type LoginRequest = {
   identifier: string;
   password: string;
 };
@@ -18,8 +18,15 @@ export type LoginResponse = {
   };
 };
 
-export type LoginRequest = LoginInputs;
+export type RegisterResponse = {
+  jwt: string;
+  user: {
+    id: number;
+    username: string;
+    email: string;
+  };
+};
 
-export type RegisterRequest = RegisterInputs;
+export type LoginInputs = LoginRequest;
 
-export type RegisterResponse = LoginResponse;
+export type RegisterInputs = RegisterRequest;
