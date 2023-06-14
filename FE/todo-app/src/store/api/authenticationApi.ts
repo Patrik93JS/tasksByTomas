@@ -5,14 +5,14 @@ export const authenticationApi = appApi.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<LoginResponse, LoginRequest>({
       query: ({ ...body }) => ({
-        url: "/auth/local",
+        url: "api/auth/local",
         method: "POST",
         body,
       }),
     }),
     register: builder.mutation<RegisterResponse, RegisterRequest>({
       query: ({ ...body }) => ({
-        url: "/auth/register",
+        url: "api/auth/local/register",
         method: "POST",
         body,
       }),

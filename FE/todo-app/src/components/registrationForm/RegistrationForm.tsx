@@ -3,6 +3,7 @@
 import React from "react";
 import styles from "./RegistrationForm.module.css";
 import { useForm } from "react-hook-form";
+import { useRegisterMutation } from "@/store/api/authenticationApi";
 
 export type RegistrationFormType = {
   username: string;
@@ -19,8 +20,10 @@ export const RegistrationForm = () => {
     defaultValues: { username: "", email: "", password: "" },
   });
 
+  const [registration] = useRegisterMutation();
+
   const onSubmit = (data: RegistrationFormType) => {
-    console.log("registr data", data);
+    registration(data);
   };
 
   return (
