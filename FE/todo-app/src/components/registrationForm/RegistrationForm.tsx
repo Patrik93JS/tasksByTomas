@@ -23,8 +23,6 @@ export const RegistrationForm = () => {
     console.log("registr data", data);
   };
 
-  console.log("errors", errors);
-
   return (
     <div className={styles.registrationFormContainer}>
       <div className="bg-gray-800 w-1/4 ">
@@ -73,7 +71,7 @@ export const RegistrationForm = () => {
               })}
             />
           </div>
-          <div className="p-5  flex justify-center text-red-500">{errors.password && <p>{errors.password.message}</p>}</div>
+          <div className="pb-5 flex justify-center text-red-500">{errors.password && <p>{errors.password.message}</p>}</div>
           <button className={styles.registrationButton} type="submit">
             Registration
           </button>
