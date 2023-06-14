@@ -21,6 +21,5 @@
 .registrationFormContainer {
   @apply h-screen w-full fixed left-0 top-0 
     flex justify-center items-center bg-black
-    rounded-xl
      bg-opacity-50 z-10 text-green-500;
 }
