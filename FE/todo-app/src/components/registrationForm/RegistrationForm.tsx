@@ -11,13 +11,19 @@ export type RegistrationFormType = {
 };
 
 export const RegistrationForm = () => {
-  const { register, handleSubmit } = useForm<RegistrationFormType>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegistrationFormType>({
     defaultValues: { username: "", email: "", password: "" },
   });
 
   const onSubmit = (data: RegistrationFormType) => {
     console.log("registr data", data);
   };
+
+  console.log("errors", errors);
 
   return (
     <div className={styles.registrationFormContainer}>
@@ -28,19 +34,46 @@ export const RegistrationForm = () => {
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="pb-5 pt-10 flex justify-center ">
-            <input type="text" className="bg-black px-3 py-1 rounded-md text-green-500" placeholder="Username" {...register("username")} />
+            <input
+              type="text"
+              className="bg-black px-3 py-1 rounded-md text-green-500"
+              placeholder="Username"
+              {...register("username", {
+                pattern: {
+                  value: /[A-Za-z]{3,}/,
+                  message: "minimum is 3 charts",
+                },
+                required: "Username is required",
+              })}
+            />
           </div>
-          <div className="p-5 flex justify-center ">
-            <input type="text" className="bg-black px-3 py-1 rounded-md text-green-500" placeholder="Email" {...register("email")} />
+          <div className="flex justify-center text-red-500">{errors.username && <p>{errors.username.message}</p>}</div>
+          <div className="p-5 flex justify-center">
+            <input
+              type="text"
+              className="bg-black px-3 py-1 rounded-md text-green-500"
+              placeholder="Email"
+              {...register("email", {
+                required: "Email is required",
+              })}
+            />
           </div>
+          <div className="flex justify-center text-red-500">{errors.email && <p>{errors.email.message}</p>}</div>
           <div className="p-5 flex justify-center ">
             <input
               type="password"
               className="bg-black px-3 py-1 rounded-md text-green-500"
               placeholder="Password"
-              {...register("password")}
+              {...register("password", {
+                pattern: {
+                  value: /^(?=.*[A-Z])(?=.*\d).+$/,
+                  message: "At least one big letter and one number",
+                },
+                required: "password is required",
+              })}
             />
           </div>
+          <div className="p-5  flex justify-center text-red-500">{errors.password && <p>{errors.password.message}</p>}</div>
           <button className={styles.registrationButton} type="submit">
             Registration
           </button>
