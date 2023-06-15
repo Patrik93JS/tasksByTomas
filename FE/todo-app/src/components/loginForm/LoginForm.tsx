@@ -21,9 +21,9 @@ export const LoginForm = () => {
   });
   const router = useRouter();
   const [login] = useLoginMutation();
-  const onSubmit = (data: LoginFormType) => {
-    login(data);
-    router.push("/");
+  const onSubmit = async (data: LoginFormType) => {
+    await login(data);
+    router.push("/home");
   };
 
   return (
