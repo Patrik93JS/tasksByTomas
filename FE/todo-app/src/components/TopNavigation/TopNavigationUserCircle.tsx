@@ -2,9 +2,12 @@ import { FC } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import styles from "./TopNavigation.module.css";
 import { useModal } from "@/hooks/useModal";
+import { useAppSelector } from "@/store/hooks";
 
 export const UserCircle: FC = () => {
   const { isOpen, toggle } = useModal();
+  const { username } = useAppSelector(({ authSlice }) => authSlice.username);
+
   return (
     <>
       <button onClick={toggle}>
