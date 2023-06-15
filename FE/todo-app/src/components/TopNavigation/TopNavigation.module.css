@@ -67,3 +67,13 @@
     cursor-pointer
     transition duration-300 ease-in-out;
 }
+
+.topNavigationAccountModal {
+  @apply right-0 top-16 fixed
+  flex justify-end items-center 
+  h-16
+  /* w-1/5 */
+  z-0
+  bg-myPrimary
+  text-green-500;
+}
