@@ -42,13 +42,15 @@ export const RegistrationForm = () => {
               {...register("username", {
                 pattern: {
                   value: /[A-Za-z]{3,}/,
-                  message: "minimum is 3 charts",
+                  message: "minimum is 3 characters",
                 },
                 required: "Username is required",
               })}
             />
           </div>
-          <div className="flex justify-center text-red-500">{errors.username && <p>{errors.username.message}</p>}</div>
+          <div className="flex justify-center text-red-500">
+            <p>{errors.username?.message}</p>
+          </div>
           <div className="p-5 flex justify-center">
             <input
               type="text"
@@ -59,7 +61,9 @@ export const RegistrationForm = () => {
               })}
             />
           </div>
-          <div className="flex justify-center text-red-500">{errors.email && <p>{errors.email.message}</p>}</div>
+          <div className="flex justify-center text-red-500">
+            <p>{errors.email?.message}</p>
+          </div>
           <div className="p-5 flex justify-center ">
             <input
               type="password"
@@ -74,7 +78,9 @@ export const RegistrationForm = () => {
               })}
             />
           </div>
-          <div className="pb-5 flex justify-center text-red-500">{errors.password && <p>{errors.password.message}</p>}</div>
+          <div className="pb-5 flex justify-center text-red-500">
+            <p>{errors.password?.message}</p>
+          </div>
           <button className={styles.registrationButton} type="submit">
             Registration
           </button>
