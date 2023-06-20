@@ -8,10 +8,9 @@ import { Providers } from "../store/provider";
 import { usePathname } from "next/navigation";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const withoutLayout = "/login";
-  ("/registration");
-
-  const hideLayout = usePathname().includes(withoutLayout);
+  const withoutLayout = ["/login", "/registration"];
+  const pathname = usePathname();
+  const hideLayout = withoutLayout.includes(pathname);
 
   return (
     <html lang="en">
