@@ -6,7 +6,9 @@ import { useAppSelector } from "@/store/hooks";
 
 export const UserCircle: FC = () => {
   const { isOpen, toggle } = useModal();
-  const { username } = useAppSelector(({ authSlice }) => authSlice.username);
+  const username = useAppSelector(({ auth }) => auth.username);
+
+  console.log("username:", username);
 
   return (
     <>
@@ -16,7 +18,7 @@ export const UserCircle: FC = () => {
       {isOpen && (
         <div className={styles.topNavigationAccountModal}>
           <div className="border-b mx-10">
-            <div className="flex justify-center px-4 pb-2">Account</div>
+            <div className="flex justify-center px-4 pb-2">{username}</div>
           </div>
         </div>
       )}
