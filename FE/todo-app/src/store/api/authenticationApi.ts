@@ -1,5 +1,5 @@
 import { appApi } from "../api/index";
-import { LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from "../../types/Auth";
+import { LoginRequest, LoginResponse, MeResponse, RegisterRequest, RegisterResponse } from "../../types/Auth";
 
 export const authenticationApi = appApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -17,7 +17,13 @@ export const authenticationApi = appApi.injectEndpoints({
         body,
       }),
     }),
+    me: builder.mutation<MeResponse, void>({
+      query: () => ({
+        url: "api/users/me",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = authenticationApi;
+export const { useLoginMutation, useRegisterMutation, useMeMutation } = authenticationApi;

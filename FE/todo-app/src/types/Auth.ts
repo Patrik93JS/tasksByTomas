@@ -27,6 +27,12 @@ export type RegisterResponse = {
   };
 };
 
+export type MeResponse = {
+  id: number;
+  username: string;
+  email: string;
+};
+
 export type LoginInputs = LoginRequest;
 
 export type RegisterInputs = RegisterRequest;

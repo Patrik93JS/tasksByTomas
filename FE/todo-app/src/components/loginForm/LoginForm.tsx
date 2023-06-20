@@ -4,7 +4,7 @@ import React from "react";
 import styles from "./LoginForm.module.css";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useLoginMutation } from "@/store/api/authenticationApi";
+import { useLoginMutation, useMeMutation } from "@/store/api/authenticationApi";
 
 export type LoginFormType = {
   identifier: string;
@@ -21,9 +21,11 @@ export const LoginForm = () => {
   });
   const router = useRouter();
   const [login] = useLoginMutation();
+  const userPat = useMeMutation();
 
   const onSubmit = async (data: LoginFormType) => {
     await Promise.all([login(data), router.prefetch("/")]);
+    console.log("haf", userPat); // TODO nefunguje
     router.push("/");
   };
 
