@@ -11,17 +11,14 @@ export const authSlice = createSlice({
   initialState: { email: "", username: "" } as AuthState,
   reducers: {
     setEmail: (state, { payload }: PayloadAction<string>) => ({ ...state, email: payload }),
-    setUsername: (state, { payload }: PayloadAction<string>) => ({ ...state, username: payload }),
   },
   extraReducers: (builder) => {
-    builder.addCase(setUsername, (state, action) => {
-      state.username = action.payload;
-    });
     builder.addMatcher(authenticationApi.endpoints.login.matchFulfilled, (state, { payload }) => {
+      console.log("payload", payload.user.username);
       state.username = payload.user.username;
       return state;
     });
   },
 });
 
-export const { setEmail, setUsername } = authSlice.actions;
+export const { setEmail } = authSlice.actions;
