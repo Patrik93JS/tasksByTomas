@@ -21,11 +21,11 @@ export const LoginForm = () => {
   });
   const router = useRouter();
   const [login] = useLoginMutation();
-  const userPat = useMeMutation();
+  const username = useMeMutation();
 
   const onSubmit = async (data: LoginFormType) => {
     await Promise.all([login(data), router.prefetch("/")]);
-    console.log("haf", userPat); // TODO nefunguje
+    console.log("haf", username); // TODO nefunguje
     router.push("/");
   };
 
