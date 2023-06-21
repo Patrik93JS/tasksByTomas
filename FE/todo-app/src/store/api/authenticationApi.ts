@@ -17,7 +17,7 @@ export const authenticationApi = appApi.injectEndpoints({
         body,
       }),
     }),
-    me: builder.mutation<MeResponse, void>({
+    me: builder.query<MeResponse, void>({
       query: () => ({
         url: "api/users/me",
         method: "GET",
@@ -26,4 +26,4 @@ export const authenticationApi = appApi.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useMeMutation } = authenticationApi;
+export const { useLoginMutation, useRegisterMutation, useMeQuery } = authenticationApi;

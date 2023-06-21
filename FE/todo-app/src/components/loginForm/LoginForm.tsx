@@ -4,7 +4,7 @@ import React from "react";
 import styles from "./LoginForm.module.css";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useLoginMutation, useMeMutation } from "@/store/api/authenticationApi";
+import { useLoginMutation } from "@/store/api/authenticationApi";
 
 export type LoginFormType = {
   identifier: string;
@@ -19,13 +19,12 @@ export const LoginForm = () => {
   } = useForm<LoginFormType>({
     defaultValues: { identifier: "", password: "" },
   });
+
   const router = useRouter();
   const [login] = useLoginMutation();
-  const username = useMeMutation();
 
   const onSubmit = async (data: LoginFormType) => {
     await Promise.all([login(data), router.prefetch("/")]);
-    console.log("haf", username); // TODO nefunguje
     router.push("/");
   };
 
