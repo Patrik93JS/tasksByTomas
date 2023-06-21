@@ -19,11 +19,13 @@ export const LoginForm = () => {
   } = useForm<LoginFormType>({
     defaultValues: { identifier: "", password: "" },
   });
+
   const router = useRouter();
   const [login] = useLoginMutation();
+
   const onSubmit = async (data: LoginFormType) => {
-    await login(data);
-    router.push("/home");
+    await Promise.all([login(data), router.prefetch("/")]);
+    router.push("/");
   };
 
   return (
