@@ -21,11 +21,11 @@ export const LoginForm = () => {
   });
 
   const router = useRouter();
-  const [login] = useLoginMutation();
+  const [login, { isSuccess, isError }] = useLoginMutation();
 
   const onSubmit = async (data: LoginFormType) => {
     await Promise.all([login(data), router.prefetch("/")]);
-    router.push("/");
+    if (isSuccess) router.push("/");
   };
 
   return (
@@ -66,6 +66,7 @@ export const LoginForm = () => {
           <button className={styles.loginButton} type="submit">
             Login
           </button>
+          <p className="text-red-500 flex justify-center">{isError && "wrong username or password"}</p>
           <div className="border-t  mx-10">
             <div className="flex justify-center px-4 py-2">Not account yet? Let&lsquo;s create one</div>
           </div>
