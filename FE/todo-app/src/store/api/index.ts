@@ -7,7 +7,7 @@ export const appApi = createApi({
     baseUrl: process.env.NEXT_PUBLIC_URL_SERVER,
     prepareHeaders: (headers, { getState }) => {
       const { token } = getState() as AppState;
-      if (token) headers.set("Authorization", `Bearer ${token}`);
+      if (token) headers.set("Authorization", `Token ${token}`);
       return headers;
     },
   }),

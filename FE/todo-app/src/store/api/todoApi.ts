@@ -1,7 +1,7 @@
 import { appApi } from ".";
 import { CreateToDoRequest, CreateToDoResponse, GetToDosResponse } from "@/types/ToDo";
 
-export const groupApi = appApi.injectEndpoints({
+export const todoApi = appApi.injectEndpoints({
   endpoints: (builder) => ({
     getToDos: builder.query<GetToDosResponse, void>({
       query: () => ({
@@ -21,4 +21,4 @@ export const groupApi = appApi.injectEndpoints({
   }),
 });
 
-export const { useCreateToDoMutation, useGetToDosQuery } = groupApi;
+export const { useCreateToDoMutation, useGetToDosQuery } = todoApi;

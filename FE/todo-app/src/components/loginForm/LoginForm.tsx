@@ -21,11 +21,11 @@ export const LoginForm = () => {
   });
 
   const router = useRouter();
-  const [login, { isSuccess, isError }] = useLoginMutation();
+  const [login, { isError }] = useLoginMutation();
 
   const onSubmit = async (data: LoginFormType) => {
-    await Promise.all([login(data), router.prefetch("/")]);
-    if (isSuccess) router.push("/");
+    const [loginData] = await Promise.all([login(data).unwrap(), router.prefetch("/")]);
+    if (loginData) router.push("/");
   };
 
   return (
