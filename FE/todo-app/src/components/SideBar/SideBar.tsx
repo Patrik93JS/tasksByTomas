@@ -3,16 +3,16 @@ import { SideBarGroup } from "./SideBarGroup";
 import { useGetGroupsQuery } from "@/store/api/groupToDoApi";
 
 export const SideBar: FC = () => {
-  const getGroups = useGetGroupsQuery();
-  const title = getGroups.data?.data.attributes.map((e) => e.title);
+  const { data } = useGetGroupsQuery();
 
-  console.log("title", title);
+  console.log("title", data);
   return (
     <div className="fixed top-0 left-0 h-screen w-16 mt-0 flex flex-col bg-myPrimary text-white shadow-lg">
-      <SideBarGroup title="Ahoj" />
-      <SideBarGroup title="Ratratahoj" />
-      <SideBarGroup title="Hihihoj" />
-      <SideBarGroup title="Papahoj" />
+      {data &&
+        data.data.map((group) => {
+          console.log("titleMap", group.attributes.title);
+          return <SideBarGroup title={group.attributes.title} key={group.id} />;
+        })}
     </div>
   );
 };

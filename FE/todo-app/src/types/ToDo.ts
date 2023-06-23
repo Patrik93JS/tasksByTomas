@@ -40,7 +40,7 @@ export type GetToDosResponse = {
       title: string;
       description: string;
       completed: boolean;
-      to_do_group: GetGroupResponse;
+      to_do_group: string; //TODO spatne
       createdAt: string;
       updatedAt: string;
       publishedAt: string;
@@ -54,8 +54,8 @@ export type GetToDosResponse = {
           id: number;
         };
       };
-    }[];
-  };
+    };
+  }[];
   meta: {
     pagination: {
       page: number;
