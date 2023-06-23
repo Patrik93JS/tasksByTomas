@@ -1,7 +1,6 @@
-import { ApiResponse } from "./Api";
-import { GetGroupResponse } from "./Group";
+import { ApiResponse, ApiRequest } from "./Api";
 
-export type CreateToDoRequest = ApiResponse<{
+export type CreateToDoRequest = ApiRequest<{
   title: string;
   description: string;
   mustBeCompleted: string;
@@ -16,21 +15,10 @@ export type CreateToDoResponse = ApiResponse<{
     description: string;
     mustBeCompleted: string;
     completed: boolean;
-    to_do_group: GetGroupResponse;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    createdBy: {
-      data: {
-        id: number;
-      };
-    };
-    updatedBy: {
-      data: {
-        id: number;
-      };
-    };
-  }[];
+  };
 }>;
 
 export type GetToDosResponse = {
