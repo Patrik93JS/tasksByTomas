@@ -8,20 +8,24 @@ import { TopNavigationIcon } from "./TopNavigationIcon";
 import { UserCircle } from "./TopNavigationUserCircle";
 import { CreateGroupInput } from "../createGroupForm/CreateGroupInput";
 import { useModal } from "@/hooks/useModal";
+import { useAppSelector } from "@/store/hooks";
 
 export const TopNavigation: FC = () => {
   const { isOpen, open, close } = useModal();
 
+  const { idGroup } = useAppSelector(({ idGroupToDo }) => idGroupToDo);
+
+  console.log("idGroup", idGroup);
+
   return (
     <div className={styles.topNavigation}>
       <Title />
-      <TopNavigationIcon icon={<BsFileEarmarkPlusFill size="28" />} text="Add New ToDo" onClick={open} />
       <TopNavigationIcon icon={<BsPlus size="32" />} text="Add New Group" onClick={open} />
+      <TopNavigationIcon icon={<BsFileEarmarkPlusFill size="28" />} text="Add New ToDo" onClick={open} />
       <TopNavigationIcon icon={<BsCheckLg size="28" />} text="Completed" />
       <TopNavigationIcon icon={<BsCollection size="28" />} text="All" />
       <Search />
       <UserCircle />
-
       <CreateGroupInput open={isOpen} closeModal={close} />
     </div>
   );

@@ -10,8 +10,7 @@ export const SideBar: FC = () => {
     <div className="fixed top-0 left-0 h-screen w-16 mt-0 flex flex-col bg-myPrimary text-white shadow-lg">
       {data &&
         data.data.map((group) => {
-          console.log("titleMap", group.attributes.title);
-          return <SideBarGroup title={group.attributes.title} key={group.id} />;
+          return <SideBarGroup title={group.attributes.title} key={group.id} idGroup={group.id} />;
         })}
     </div>
   );
