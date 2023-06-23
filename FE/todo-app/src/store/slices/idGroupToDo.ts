@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 type IdGroupTodo = {
-  idGroup: number | undefined;
+  idGroup: number | null;
 };
 
 export const idGroupToDoSlice = createSlice({
   name: "idGroupToDo",
   initialState: {
-    idGroup: 1,
+    idGroup: null,
   } as IdGroupTodo,
   reducers: {
     setIdGroup: (state, action) => {

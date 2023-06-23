@@ -41,6 +41,12 @@
     cursor-pointer shadow-lg;
 }
 
+.topNavigationIconDisabled {
+  @apply relative flex items-center justify-center 
+    h-10 w-8  mb-0 mx-auto
+    bg-myPrimary text-green-800;
+}
+
 .topNavigationTitleText {
   @apply text-xl text-green-500 tracking-wider font-semibold 
     mr-auto ml-20 my-auto;

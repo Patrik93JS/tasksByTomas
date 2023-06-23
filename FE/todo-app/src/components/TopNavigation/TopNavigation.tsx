@@ -15,13 +15,15 @@ export const TopNavigation: FC = () => {
 
   const { idGroup } = useAppSelector(({ idGroupToDo }) => idGroupToDo);
 
-  console.log("idGroup", idGroup);
-
   return (
     <div className={styles.topNavigation}>
       <Title />
       <TopNavigationIcon icon={<BsPlus size="32" />} text="Add New Group" onClick={open} />
-      <TopNavigationIcon icon={<BsFileEarmarkPlusFill size="28" />} text="Add New ToDo" onClick={open} />
+      {idGroup ? (
+        <TopNavigationIcon icon={<BsFileEarmarkPlusFill size="28" />} text="Add New ToDo" onClick={open} />
+      ) : (
+        <BsFileEarmarkPlusFill size="28" className={styles.topNavigationIconDisabled} />
+      )}
       <TopNavigationIcon icon={<BsCheckLg size="28" />} text="Completed" />
       <TopNavigationIcon icon={<BsCollection size="28" />} text="All" />
       <Search />
