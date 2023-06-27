@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import styles from "./CreateToDoForm.module.css";
 import { createPortal } from "react-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { useCreateToDoMutation } from "@/store/api/todoApi";
 
 type Props = {
   open: boolean;
@@ -24,8 +25,17 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
     },
   });
 
+  const [createToDo] = useCreateToDoMutation();
+
   const onSubmit = async (data: CreateToDoType) => {
-    console.log("createTodo", data);
+    const dataForm = {
+      data: {
+        title: data.title,
+        description: data.description,
+        mustBeCompleted: data.mustBeCompleted,
+      },
+    };
+    createToDo(dataForm);
   };
 
   return open

@@ -3,9 +3,9 @@ import { ApiResponse, ApiRequest } from "./Api";
 export type CreateToDoRequest = ApiRequest<{
   title: string;
   description: string;
-  mustBeCompleted: string;
-  completed: true;
-  to_do_group: string | string;
+  mustBeCompleted: Date;
+  // completed: true;
+  // to_do_group: number;
 }>;
 
 export type CreateToDoResponse = ApiResponse<{
@@ -13,7 +13,7 @@ export type CreateToDoResponse = ApiResponse<{
   attributes: {
     title: string;
     description: string;
-    mustBeCompleted: string;
+    mustBeCompleted: Date;
     completed: boolean;
     createdAt: string;
     updatedAt: string;
@@ -21,35 +21,17 @@ export type CreateToDoResponse = ApiResponse<{
   };
 }>;
 
-export type GetToDosResponse = {
-  data: {
+export type GetToDosResponse = ApiResponse<
+  {
     id: number;
     attributes: {
       title: string;
       description: string;
       completed: boolean;
-      to_do_group: string; //TODO spatne
+      to_do_group: number;
       createdAt: string;
       updatedAt: string;
       publishedAt: string;
-      createdBy: {
-        data: {
-          id: number;
-        };
-      };
-      updatedBy: {
-        data: {
-          id: number;
-        };
-      };
     };
-  }[];
-  meta: {
-    pagination: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
-};
+  }[]
+>;
