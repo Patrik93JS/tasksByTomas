@@ -7,8 +7,7 @@ import { useRouter } from "next/navigation";
 import { useLoginMutation } from "@/store/api/authenticationApi";
 import { Input } from "../formComponents/Input";
 import { Error } from "../formComponents/Error";
-import { SubmitButton } from "../formComponents/SubmitButton";
-import { RedirectButton } from "../formComponents/RedirectButton";
+import { Button } from "../formComponents/Button";
 
 export type LoginFormType = {
   identifier: string;
@@ -43,7 +42,7 @@ export const LoginForm = () => {
             <Input type="password" placeholder="Password" name="password" description="Password" />
             <Error errorMsg={methods.formState.errors.password?.message} />
 
-            <SubmitButton label="Login" />
+            <Button label="Login" buttonType="submitType" />
             {isError && <Error errorMsg="wrong username or password" />}
 
             <div className="border-t  mx-10">
@@ -52,7 +51,7 @@ export const LoginForm = () => {
           </form>
         </FormProvider>
 
-        <RedirectButton path="/registration" label="Registration" />
+        <Button path="/registration" label="Registration" ariaLabel="redirectRegistration" />
       </div>
     </div>
   );

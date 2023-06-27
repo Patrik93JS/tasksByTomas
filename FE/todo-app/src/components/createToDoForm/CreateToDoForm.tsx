@@ -4,8 +4,7 @@ import styles from "./CreateToDoForm.module.css";
 import { createPortal } from "react-dom";
 import { useCreateToDoMutation } from "@/store/api/todoApi";
 import { Input } from "../formComponents/Input";
-import { CloseButton } from "../formComponents/CloseButton";
-import { SubmitButton } from "../formComponents/SubmitButton";
+import { Button } from "../formComponents/Button";
 
 type Props = {
   open: boolean;
@@ -47,7 +46,7 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
           <div className={styles.createToDoContainer}>
             <div className="bg-gray-800 w-1/4">
               <div className="flex justify-end w-100 p-3">
-                <CloseButton closeModal={closeModal} />
+                <Button closeModal={closeModal} buttonType="closeButton" />
               </div>
               <div className="border-b  mx-10">
                 <div className="flex justify-center px-4 py-2">Create your ToDo</div>
@@ -60,7 +59,7 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
 
                   <Input name="mustBeCompleted" description="When ToDo have to be done?" placeholder="Description" type="datetime-local" />
 
-                  <SubmitButton label="Create" />
+                  <Button label="Create" buttonType="submitType" />
                 </form>
               </FormProvider>
             </div>

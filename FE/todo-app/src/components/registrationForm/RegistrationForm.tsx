@@ -6,7 +6,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useRegisterMutation } from "@/store/api/authenticationApi";
 import { Input } from "../formComponents/Input";
 import { Error } from "../formComponents/Error";
-import { SubmitButton } from "../formComponents/SubmitButton";
+import { Button } from "../formComponents/Button";
 import { useRouter } from "next/navigation";
 
 export type RegistrationFormType = {
@@ -24,7 +24,7 @@ export const RegistrationForm = () => {
 
   const onSubmit = (data: RegistrationFormType) => {
     registration(data);
-    router.push("/home");
+    router.push("/");
   };
 
   return (
@@ -59,7 +59,7 @@ export const RegistrationForm = () => {
             />
             <Error errorMsg={methods.formState.errors.password?.message} />
 
-            <SubmitButton label="Registration" />
+            <Button label="Registration" buttonType="submitType" />
           </form>
         </FormProvider>
       </div>
