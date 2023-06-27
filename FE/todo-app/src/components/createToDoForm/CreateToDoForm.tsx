@@ -4,7 +4,7 @@ import styles from "./CreateToDoForm.module.css";
 import { createPortal } from "react-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useCreateToDoMutation } from "@/store/api/todoApi";
-import { RegisterInput } from "../formComponents/RegisterInput";
+import { Input } from "../formComponents/Input";
 
 type Props = {
   open: boolean;
@@ -37,6 +37,7 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
       },
     };
     createToDo(dataForm);
+    closeModal();
   };
 
   return open
@@ -54,18 +55,12 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
               </div>
               <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
-                  <RegisterInput name="title" description="Name ToDo" placeholder="Name" type="text" />
+                  <Input name="title" description="Name ToDo" placeholder="Name" type="text" />
 
-                  <RegisterInput name="description" description="Describe ToDo" placeholder="Description" type="text" />
+                  <Input name="description" description="Describe ToDo" placeholder="Description" type="text" />
 
-                  <div className="p-6 flex justify-center items-center flex-col">
-                    <p className="pb-2">When ToDo have to be done?</p>
-                    <input
-                      type="datetime-local"
-                      className="px-3 py-1 rounded-md  appearance-none shadow bg-black "
-                      {...methods.register("mustBeCompleted")}
-                    />
-                  </div>
+                  <Input name="mustBeCompleted" description="When ToDo have to be done?" placeholder="Description" type="datetime-local" />
+
                   <button className={styles.createButton} type="submit">
                     Create
                   </button>
