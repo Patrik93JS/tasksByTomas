@@ -2,8 +2,12 @@
 
 import React from "react";
 import styles from "./RegistrationForm.module.css";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { useRegisterMutation } from "@/store/api/authenticationApi";
+import { Input } from "../formComponents/Input";
+import { Error } from "../formComponents/Error";
+import { SubmitButton } from "../formComponents/SubmitButton";
+import { useRouter } from "next/navigation";
 
 export type RegistrationFormType = {
   username: string;
@@ -12,18 +16,15 @@ export type RegistrationFormType = {
 };
 
 export const RegistrationForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<RegistrationFormType>({
+  const methods = useForm<RegistrationFormType>({
     defaultValues: { username: "", email: "", password: "" },
   });
-
+  const router = useRouter();
   const [registration] = useRegisterMutation();
 
   const onSubmit = (data: RegistrationFormType) => {
     registration(data);
+    router.push("/home");
   };
 
   return (
@@ -33,58 +34,34 @@ export const RegistrationForm = () => {
         <div className="border-b  mx-10">
           <div className="flex justify-center px-4 py-2">Make your registration</div>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="pb-5 pt-10 flex justify-center ">
-            <input
+        <FormProvider {...methods}>
+          <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <Input
               type="text"
-              className="bg-black px-3 py-1 rounded-md text-green-500"
+              name="username"
+              description="Username"
               placeholder="Username"
-              {...register("username", {
-                pattern: {
-                  value: /[A-Za-z]{3,}/,
-                  message: "minimum is 3 characters",
-                },
-                required: "Username is required",
-              })}
+              validationValue={/[A-Za-z]{3,}/}
+              validationMessage="minimum is 3 characters"
             />
-          </div>
-          <div className="flex justify-center text-red-500">
-            <p>{errors.username?.message}</p>
-          </div>
-          <div className="p-5 flex justify-center">
-            <input
-              type="text"
-              className="bg-black px-3 py-1 rounded-md text-green-500"
-              placeholder="Email"
-              {...register("email", {
-                required: "Email is required",
-              })}
-            />
-          </div>
-          <div className="flex justify-center text-red-500">
-            <p>{errors.email?.message}</p>
-          </div>
-          <div className="p-5 flex justify-center ">
-            <input
+            <Error errorMsg={methods.formState.errors.username?.message} />
+
+            <Input type="text" name="email" description="Email" placeholder="Email" />
+            <Error errorMsg={methods.formState.errors.email?.message} />
+
+            <Input
               type="password"
-              className="bg-black px-3 py-1 rounded-md text-green-500"
+              name="password"
+              description="Password"
               placeholder="Password"
-              {...register("password", {
-                pattern: {
-                  value: /^(?=.*[A-Z])(?=.*\d).+$/,
-                  message: "At least one big letter and one number",
-                },
-                required: "password is required",
-              })}
+              validationValue={/^(?=.*[A-Z])(?=.*\d).+$/}
+              validationMessage="At least one big letter and one number"
             />
-          </div>
-          <div className="pb-5 flex justify-center text-red-500">
-            <p>{errors.password?.message}</p>
-          </div>
-          <button className={styles.registrationButton} type="submit">
-            Registration
-          </button>
-        </form>
+            <Error errorMsg={methods.formState.errors.password?.message} />
+
+            <SubmitButton label="Registration" />
+          </form>
+        </FormProvider>
       </div>
     </div>
   );

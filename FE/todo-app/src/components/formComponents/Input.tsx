@@ -24,8 +24,8 @@ export const Input: FC<Props> = ({ name, description, placeholder, type, validat
           pattern:
             validationValue && validationMessage
               ? {
-                  value: { validationValue },
-                  message: { validationMessage },
+                  value: validationValue,
+                  message: validationMessage,
                 }
               : undefined,
           required: `${name} is required`,

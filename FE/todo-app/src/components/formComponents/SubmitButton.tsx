@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styles from "./Components.module.css";
 
 type Props = {
-  label: "Create" | "Login";
+  label: "Create" | "Login" | "Registration";
 };
 
 export const SubmitButton: FC<Props> = ({ label }) => {
