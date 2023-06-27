@@ -9,7 +9,7 @@ import { UserCircle } from "./TopNavigationUserCircle";
 import { CreateGroupInput } from "../createGroupForm/CreateGroupInput";
 import { useModal } from "@/hooks/useModal";
 import { useAppSelector } from "@/store/hooks";
-import { CreateToDoForm } from "../createToDoForm/createToDoForm";
+import { CreateToDoForm } from "../createToDoForm/CreateToDoForm";
 
 export const TopNavigation: FC = () => {
   const { isOpen, open, close } = useModal();
