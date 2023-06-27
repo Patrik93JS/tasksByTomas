@@ -3,6 +3,11 @@
 @tailwind utilities;
 @tailwind variants;
 
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.8);
+}
+
 @layer components {
   .content-container {
     @apply px-20 py-10 ml-auto mr-auto w-full;

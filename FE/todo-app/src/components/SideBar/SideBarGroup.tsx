@@ -1,19 +1,26 @@
 import { FC } from "react";
 import styles from "./SideBar.module.css";
+import { useAppDispatch } from "@/store/hooks";
+import { setIdGroup } from "@/store/slices/idGroupToDo";
 
 type Props = {
-  title: string;
+  title: string | null;
+  idGroup: number;
 };
 
-export const SideBarGroup: FC<Props> = ({ title }) => {
-  const titleLetter = title.charAt(0).toUpperCase();
+export const SideBarGroup: FC<Props> = ({ title, idGroup }) => {
+  const dispatch = useAppDispatch();
+
+  const titleLetter = title?.charAt(0).toUpperCase();
+
+  const handleClick = () => {
+    dispatch(setIdGroup(idGroup));
+  };
 
   return (
-    <div className={`${styles.sidebar} group`}>
+    <button className={`${styles.sidebar} group`} onClick={handleClick}>
       {titleLetter}
-      <span className={`${styles.sidebarTooltip} group-hover:scale-100`}>
-        {title}
-      </span>
-    </div>
+      <span className={`${styles.sidebarTooltip} group-hover:scale-100`}>{title}</span>
+    </button>
   );
 };

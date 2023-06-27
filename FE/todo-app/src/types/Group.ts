@@ -11,9 +11,14 @@ export type CreateGroupToDoResponse = ApiResponse<{
   };
 }>;
 
-export type GetGroupResponse = ApiResponse<{
-  id: number;
-  attributes: {
-    title: string;
-  }[];
-}>;
+export type GetGroupResponse = ApiResponse<
+  {
+    id: number;
+    attributes: {
+      title: string;
+      createdAt: string;
+      publishedAt: string;
+      updatedAt: string;
+    };
+  }[]
+>;
