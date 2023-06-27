@@ -8,6 +8,7 @@ import { useLoginMutation } from "@/store/api/authenticationApi";
 import { Input } from "../formComponents/Input";
 import { Error } from "../formComponents/Error";
 import { Button } from "../formComponents/Button";
+import { Redirect } from "../formComponents/Redirect";
 
 export type LoginFormType = {
   identifier: string;
@@ -51,7 +52,7 @@ export const LoginForm = () => {
           </form>
         </FormProvider>
 
-        <Button path="/registration" label="Registration" ariaLabel="redirectRegistration" />
+        <Redirect path="/registration">Registration</Redirect>
       </div>
     </div>
   );
