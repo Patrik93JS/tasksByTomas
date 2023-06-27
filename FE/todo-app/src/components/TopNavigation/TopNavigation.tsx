@@ -13,7 +13,7 @@ import { CreateToDoForm } from "../createToDoForm/CreateToDoForm";
 
 export const TopNavigation: FC = () => {
   const { isOpen, open, close } = useModal();
-  const { isOpen: _isOpen, open: _open, close: _close } = useModal();
+  const { isOpen: isToDoFormOpen, open: openToDoForm, close: closeToDoForm } = useModal();
 
   const { idGroup } = useAppSelector(({ idGroupToDo }) => idGroupToDo);
 
@@ -22,7 +22,7 @@ export const TopNavigation: FC = () => {
       <Title />
       <TopNavigationIcon icon={<BsPlus size="32" />} text="Add New Group" onClick={open} />
       {idGroup ? (
-        <TopNavigationIcon icon={<BsFileEarmarkPlusFill size="28" />} text="Add New ToDo" onClick={_open} />
+        <TopNavigationIcon icon={<BsFileEarmarkPlusFill size="28" />} text="Add New ToDo" onClick={openToDoForm} />
       ) : (
         <BsFileEarmarkPlusFill size="28" className={styles.topNavigationIconDisabled} />
       )}
@@ -31,7 +31,7 @@ export const TopNavigation: FC = () => {
       <Search />
       <UserCircle />
       <CreateGroupInput open={isOpen} closeModal={close} />
-      <CreateToDoForm open={_isOpen} closeModal={_close} />
+      <CreateToDoForm open={isToDoFormOpen} closeModal={closeToDoForm} />
     </div>
   );
 };

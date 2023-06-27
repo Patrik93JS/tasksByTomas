@@ -7,10 +7,9 @@ export const SideBar: FC = () => {
 
   return (
     <div className="fixed top-0 left-0 h-screen w-16 mt-0 flex flex-col bg-myPrimary text-white shadow-lg">
-      {data &&
-        data.data.map((group) => {
-          return <SideBarGroup title={group.attributes.title} key={group.id} idGroup={group.id} />;
-        })}
+      {data?.data.map((group) => {
+        return <SideBarGroup title={group.attributes.title} key={group.id} idGroup={group.id} />;
+      })}
     </div>
   );
 };

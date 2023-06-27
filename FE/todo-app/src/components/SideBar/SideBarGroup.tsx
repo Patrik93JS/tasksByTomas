@@ -13,8 +13,12 @@ export const SideBarGroup: FC<Props> = ({ title, idGroup }) => {
 
   const titleLetter = title?.charAt(0).toUpperCase();
 
+  const handleClick = () => {
+    dispatch(setIdGroup(idGroup));
+  };
+
   return (
-    <button className={`${styles.sidebar} group`} onClick={() => dispatch(setIdGroup(idGroup))}>
+    <button className={`${styles.sidebar} group`} onClick={handleClick}>
       {titleLetter}
       <span className={`${styles.sidebarTooltip} group-hover:scale-100`}>{title}</span>
     </button>

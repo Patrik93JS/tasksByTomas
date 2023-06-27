@@ -1,9 +1,10 @@
 import React, { FC } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import styles from "./CreateToDoForm.module.css";
 import { createPortal } from "react-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useCreateToDoMutation } from "@/store/api/todoApi";
+import { CreateToDoInput } from "./CreateToDoInput";
 
 type Props = {
   open: boolean;
@@ -17,7 +18,7 @@ export type CreateToDoType = {
 };
 
 export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
-  const { register, handleSubmit } = useForm<CreateToDoType>({
+  const methods = useForm<CreateToDoType>({
     defaultValues: {
       title: "",
       description: "",
@@ -51,32 +52,23 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
               <div className="border-b  mx-10">
                 <div className="flex justify-center px-4 py-2">Create your ToDo</div>
               </div>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="p-6 flex justify-center items-center flex-col">
-                  <p className="pb-2">Name ToDo</p>
-                  <input type="text" placeholder="Name" className="bg-black px-3 py-1 rounded-md text-green-500" {...register("title")} />
-                </div>
-                <div className="p-6 flex justify-center items-center flex-col">
-                  <p className="pb-2">Describe ToDo</p>
-                  <input
-                    type="text"
-                    placeholder="Description"
-                    className="bg-black px-3 py-1 rounded-md text-green-500"
-                    {...register("description")}
-                  />
-                </div>
-                <div className="p-6 flex justify-center items-center flex-col ">
-                  <p className="pb-2">When does the ToDo have to be done?</p>
-                  <input
-                    type="datetime-local"
-                    className=" px-3 py-1 rounded-md  appearance-none   shadow bg-black "
-                    {...register("mustBeCompleted")}
-                  />
-                </div>
-                <button className={styles.createButton} type="submit">
-                  Create
-                </button>
-              </form>
+              <FormProvider {...methods}>
+                <form onSubmit={methods.handleSubmit(onSubmit)}>
+                  <CreateToDoInput name="title" description="Name ToDo" placeholder="Name" />
+                  <CreateToDoInput name="description" description="Describe ToDo" placeholder="Description" />
+                  <div className="p-6 flex justify-center items-center flex-col ">
+                    <p className="pb-2">When does the ToDo have to be done?</p>
+                    <input
+                      type="datetime-local"
+                      className=" px-3 py-1 rounded-md  appearance-none shadow bg-black "
+                      {...methods.register("mustBeCompleted")}
+                    />
+                  </div>
+                  <button className={styles.createButton} type="submit">
+                    Create
+                  </button>
+                </form>
+              </FormProvider>
             </div>
           </div>
         </>,
