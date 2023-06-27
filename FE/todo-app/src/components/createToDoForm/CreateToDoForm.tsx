@@ -4,7 +4,7 @@ import styles from "./CreateToDoForm.module.css";
 import { createPortal } from "react-dom";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useCreateToDoMutation } from "@/store/api/todoApi";
-import { CreateToDoInput } from "./CreateToDoInput";
+import { RegisterInput } from "../formComponents/RegisterInput";
 
 type Props = {
   open: boolean;
@@ -54,13 +54,15 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
               </div>
               <FormProvider {...methods}>
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
-                  <CreateToDoInput name="title" description="Name ToDo" placeholder="Name" />
-                  <CreateToDoInput name="description" description="Describe ToDo" placeholder="Description" />
-                  <div className="p-6 flex justify-center items-center flex-col ">
-                    <p className="pb-2">When does the ToDo have to be done?</p>
+                  <RegisterInput name="title" description="Name ToDo" placeholder="Name" type="text" />
+
+                  <RegisterInput name="description" description="Describe ToDo" placeholder="Description" type="text" />
+
+                  <div className="p-6 flex justify-center items-center flex-col">
+                    <p className="pb-2">When ToDo have to be done?</p>
                     <input
                       type="datetime-local"
-                      className=" px-3 py-1 rounded-md  appearance-none shadow bg-black "
+                      className="px-3 py-1 rounded-md  appearance-none shadow bg-black "
                       {...methods.register("mustBeCompleted")}
                     />
                   </div>
