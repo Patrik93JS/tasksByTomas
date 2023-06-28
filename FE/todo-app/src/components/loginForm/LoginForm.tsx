@@ -9,7 +9,7 @@ import { Input } from "../formComponents/Input";
 import { Error } from "../formComponents/Error";
 import { Button } from "../formComponents/Button";
 import { Redirect } from "../formComponents/Redirect";
-import { InfoBox } from "../formComponents/infoBox";
+import { InfoBox } from "../formComponents/InfoBox";
 
 export type LoginFormType = {
   identifier: string;

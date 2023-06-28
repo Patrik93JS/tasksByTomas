@@ -27,6 +27,7 @@ export type GetToDosResponse = ApiResponse<
     attributes: {
       title: string;
       description: string;
+      mustBeCompleted: Date;
       completed: boolean;
       to_do_group: number;
       createdAt: string;
