@@ -27,6 +27,8 @@ export const RegistrationForm = () => {
     router.push("/");
   };
 
+  const { handleSubmit, formState } = methods;
+
   return (
     <div className={styles.registrationFormContainer}>
       <div className="bg-gray-800 w-1/4 ">
@@ -35,7 +37,7 @@ export const RegistrationForm = () => {
           <div className="flex justify-center px-4 py-2">Make your registration</div>
         </div>
         <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Input
               type="text"
               name="username"
@@ -44,10 +46,10 @@ export const RegistrationForm = () => {
               validationValue={/[A-Za-z]{3,}/}
               validationMessage="minimum is 3 characters"
             />
-            <Error errorMsg={methods.formState.errors.username?.message} />
+            <Error errorMsg={formState.errors.username?.message} ariaLabel="errorMsgUsernameReg" ariaLive="polite" ariaAtomic={true} />
 
             <Input type="text" name="email" description="Email" placeholder="Email" />
-            <Error errorMsg={methods.formState.errors.email?.message} />
+            <Error errorMsg={formState.errors.email?.message} ariaLabel="errorMsgEmailReg" ariaLive="polite" ariaAtomic={true} />
 
             <Input
               type="password"
@@ -57,7 +59,7 @@ export const RegistrationForm = () => {
               validationValue={/^(?=.*[A-Z])(?=.*\d).+$/}
               validationMessage="At least one big letter and one number"
             />
-            <Error errorMsg={methods.formState.errors.password?.message} />
+            <Error errorMsg={formState.errors.password?.message} ariaLabel="errorMsgPasswordReg" ariaLive="polite" ariaAtomic={true} />
 
             <Button buttonType="submitType">Registration</Button>
           </form>

@@ -41,13 +41,15 @@ export const LoginForm = () => {
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Input type="text" placeholder="Username" name="identifier" description="Username" />
-            <Error errorMsg={formState.errors.identifier?.message} />
+            <Error errorMsg={formState.errors.identifier?.message} ariaLabel="errorMsgUsernameLog" ariaLive="polite" ariaAtomic={true} />
 
             <Input type="password" placeholder="Password" name="password" description="Password" />
-            <Error errorMsg={formState.errors.password?.message} />
+            <Error errorMsg={formState.errors.password?.message} ariaLabel="errorMsgPasswordLog" ariaLive="polite" ariaAtomic={true} />
 
             <Button buttonType="submitType">Login</Button>
-            {isError && <Error errorMsg="wrong username or password" />}
+            {isError && (
+              <Error errorMsg="wrong username or password" ariaLabel="errorMsgWrongDataLog" ariaLive="assertive" ariaAtomic={true} />
+            )}
 
             <InfoBox>Not account yet? Let&lsquo;s create one</InfoBox>
           </form>
