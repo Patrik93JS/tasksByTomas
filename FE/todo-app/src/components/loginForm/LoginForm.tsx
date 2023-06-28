@@ -9,6 +9,7 @@ import { Input } from "../formComponents/Input";
 import { Error } from "../formComponents/Error";
 import { Button } from "../formComponents/Button";
 import { Redirect } from "../formComponents/Redirect";
+import { InfoBox } from "../formComponents/infoBox";
 
 export type LoginFormType = {
   identifier: string;
@@ -46,9 +47,7 @@ export const LoginForm = () => {
             <Button buttonType="submitType">Login</Button>
             {isError && <Error errorMsg="wrong username or password" />}
 
-            <div className="border-t  mx-10">
-              <div className="flex justify-center px-4 py-2">Not account yet? Let&lsquo;s create one</div>
-            </div>
+            <InfoBox>Not account yet? Let&lsquo;s create one</InfoBox>
           </form>
         </FormProvider>
 
