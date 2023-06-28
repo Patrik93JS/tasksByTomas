@@ -1,25 +1,21 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import styles from "./Components.module.css";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-type Props = {
-  label?: "Create" | "Login" | "Registration";
+type Props = React.ComponentPropsWithoutRef<"button"> & {
   buttonType?: "closeButton" | "submitType";
-  closeModal?: () => void;
-  path?: string;
-  ariaLabel?: string;
-  className?: string;
+  children?: ReactNode;
 };
 
-export const Button: FC<Props> = ({ label, buttonType, closeModal, ariaLabel, className }) => {
+export const Button: FC<Props> = (props: Props) => {
+  const { buttonType, children, ...rest } = props;
   return (
     <button
-      className={buttonType === "closeButton" ? `${styles.closeButton} ${className}` : `${styles.submitButton} ${className}`}
+      className={buttonType === "closeButton" ? styles.closeButton : styles.submitButton}
       type={buttonType === "submitType" ? "submit" : undefined}
-      onClick={buttonType === "closeButton" ? closeModal : undefined}
-      aria-label={ariaLabel}
+      {...rest}
     >
-      {buttonType === "closeButton" ? <AiFillCloseCircle /> : label}
+      {buttonType === "closeButton" ? <AiFillCloseCircle /> : children}
     </button>
   );
 };

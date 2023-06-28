@@ -43,7 +43,7 @@ export const LoginForm = () => {
             <Input type="password" placeholder="Password" name="password" description="Password" />
             <Error errorMsg={methods.formState.errors.password?.message} />
 
-            <Button label="Login" buttonType="submitType" />
+            <Button buttonType="submitType">Login</Button>
             {isError && <Error errorMsg="wrong username or password" />}
 
             <div className="border-t  mx-10">

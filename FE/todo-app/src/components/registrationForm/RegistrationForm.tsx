@@ -59,7 +59,7 @@ export const RegistrationForm = () => {
             />
             <Error errorMsg={methods.formState.errors.password?.message} />
 
-            <Button label="Registration" buttonType="submitType" />
+            <Button buttonType="submitType">Registration</Button>
           </form>
         </FormProvider>
       </div>
