@@ -2,9 +2,14 @@
 
 import React from "react";
 import styles from "./LoginForm.module.css";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useLoginMutation } from "@/store/api/authenticationApi";
+import { Input } from "../formComponents/Input";
+import { Error } from "../formComponents/Error";
+import { Button } from "../formComponents/Button";
+import { Redirect } from "../formComponents/Redirect";
+import { InfoBox } from "../formComponents/infoBox";
 
 export type LoginFormType = {
   identifier: string;
@@ -12,11 +17,7 @@ export type LoginFormType = {
 };
 
 export const LoginForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormType>({
+  const methods = useForm<LoginFormType>({
     defaultValues: { identifier: "", password: "" },
   });
 
@@ -28,6 +29,8 @@ export const LoginForm = () => {
     if (loginData) router.push("/");
   };
 
+  const { handleSubmit, formState } = methods;
+
   return (
     <div className={styles.loginFormContainer}>
       <div className="bg-gray-800 w-1/4 ">
@@ -35,45 +38,22 @@ export const LoginForm = () => {
         <div className="border-b  mx-10">
           <div className="flex justify-center px-4 py-2">Log to ToDo app</div>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="pb-5 pt-10 flex justify-center ">
-            <input
-              type="text"
-              className="bg-black px-3 py-1 rounded-md text-green-500"
-              placeholder="Username"
-              {...register("identifier", {
-                required: "Username is required",
-              })}
-            />
-          </div>
-          <div className="flex justify-center text-red-500">
-            <p>{errors.identifier?.message}</p>
-          </div>
+        <FormProvider {...methods}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Input type="text" placeholder="Username" name="identifier" description="Username" />
+            <Error errorMsg={formState.errors.identifier?.message} />
 
-          <div className="p-5 flex justify-center ">
-            <input
-              type="password"
-              className="bg-black px-3 py-1 rounded-md text-green-500"
-              placeholder="Password"
-              {...register("password", {
-                required: "password is required",
-              })}
-            />
-          </div>
-          <div className="pb-5 flex justify-center text-red-500">
-            <p>{errors.password?.message}</p>
-          </div>
-          <button className={styles.loginButton} type="submit">
-            Login
-          </button>
-          <p className="text-red-500 flex justify-center">{isError && "wrong username or password"}</p>
-          <div className="border-t  mx-10">
-            <div className="flex justify-center px-4 py-2">Not account yet? Let&lsquo;s create one</div>
-          </div>
-        </form>
-        <button className={styles.loginButton} type="submit" onClick={() => router.push("/registration")}>
-          Registration
-        </button>
+            <Input type="password" placeholder="Password" name="password" description="Password" />
+            <Error errorMsg={formState.errors.password?.message} />
+
+            <Button buttonType="submitType">Login</Button>
+            {isError && <Error errorMsg="wrong username or password" />}
+
+            <InfoBox>Not account yet? Let&lsquo;s create one</InfoBox>
+          </form>
+        </FormProvider>
+
+        <Redirect href="/registration">Registration</Redirect>
       </div>
     </div>
   );

@@ -56,6 +56,7 @@ module.exports = {
         mySecondary: "#5865f2",
         myGray: colors.trueGray,
       },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

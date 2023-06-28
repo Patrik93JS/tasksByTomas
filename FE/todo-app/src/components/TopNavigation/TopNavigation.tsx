@@ -6,7 +6,7 @@ import { Search } from "./TopNavigationSearch";
 import { Title } from "./TopNavigationTitle";
 import { TopNavigationIcon } from "./TopNavigationIcon";
 import { UserCircle } from "./TopNavigationUserCircle";
-import { CreateGroupInput } from "../createGroupForm/CreateGroupInput";
+import { CreateGroupForm } from "../createGroupForm/CreateGroupForm";
 import { useModal } from "@/hooks/useModal";
 import { useAppSelector } from "@/store/hooks";
 import { CreateToDoForm } from "../createToDoForm/CreateToDoForm";
@@ -30,7 +30,7 @@ export const TopNavigation: FC = () => {
       <TopNavigationIcon icon={<BsCollection size="28" />} text="All" />
       <Search />
       <UserCircle />
-      <CreateGroupInput open={isOpen} closeModal={close} />
+      <CreateGroupForm open={isOpen} closeModal={close} />
       <CreateToDoForm open={isToDoFormOpen} closeModal={closeToDoForm} />
     </div>
   );
