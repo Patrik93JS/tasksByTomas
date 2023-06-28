@@ -52,7 +52,7 @@ export const LoginForm = () => {
           </form>
         </FormProvider>
 
-        <Redirect path="/registration">Registration</Redirect>
+        <Redirect href="/registration">Registration</Redirect>
       </div>
     </div>
   );
