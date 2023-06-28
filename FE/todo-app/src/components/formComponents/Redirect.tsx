@@ -1,16 +1,16 @@
 import React, { FC, ReactNode } from "react";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import styles from "./Components.module.css";
 
-type Props = {
-  path: string;
+type Props = LinkProps & {
   children?: ReactNode;
   className?: string;
 };
 
-export const Redirect: FC<Props> = ({ path, children, className }) => {
+export const Redirect: FC<Props> = (props: Props) => {
+  const { children, className, ...rest } = props;
   return (
-    <Link href={path} className={`${styles.redirect} ${className}`}>
+    <Link className={`${styles.redirect} ${className}`} {...rest}>
       {children}
     </Link>
   );
