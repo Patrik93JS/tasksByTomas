@@ -12,8 +12,7 @@ type Props = ComponentPropsWithoutRef<"input"> & {
   validationMessage?: string;
 };
 
-export const Input: FC<Props> = (props: Props) => {
-  const { name, description, placeholder, type, validationValue, validationMessage, ...rest } = props;
+export const Input: FC<Props> = ({ name, description, placeholder, type, validationValue, validationMessage, ...rest }) => {
   const { register } = useFormContext();
   const inputStyle = cn("bg-black px-3 py-1 rounded-md text-green-500");
   return (

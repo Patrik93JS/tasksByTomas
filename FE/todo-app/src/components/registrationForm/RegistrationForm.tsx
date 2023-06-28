@@ -46,10 +46,9 @@ export const RegistrationForm = () => {
               validationValue={/[A-Za-z]{3,}/}
               validationMessage="minimum is 3 characters"
             />
-            <Error errorMsg={formState.errors.username?.message} ariaLabel="errorMsgUsernameReg" ariaLive="polite" ariaAtomic={true} />
+            <Error errorMsg={formState.errors.username?.message} />
 
             <Input type="text" name="email" description="Email" placeholder="Email" />
-            <Error errorMsg={formState.errors.email?.message} ariaLabel="errorMsgEmailReg" ariaLive="polite" ariaAtomic={true} />
 
             <Input
               type="password"
@@ -59,7 +58,7 @@ export const RegistrationForm = () => {
               validationValue={/^(?=.*[A-Z])(?=.*\d).+$/}
               validationMessage="At least one big letter and one number"
             />
-            <Error errorMsg={formState.errors.password?.message} ariaLabel="errorMsgPasswordReg" ariaLive="polite" ariaAtomic={true} />
+            <Error errorMsg={formState.errors.password?.message} />
 
             <Button buttonType="submitType">Registration</Button>
           </form>

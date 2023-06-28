@@ -1,15 +1,11 @@
-import React, { ComponentPropsWithoutRef, FC, ReactNode } from "react";
+import React, { ComponentPropsWithoutRef, FC } from "react";
+import { cn } from "@/lib/utils";
 
 type Props = ComponentPropsWithoutRef<"p"> & {
-  children: ReactNode;
   className?: string;
 };
 
-export const Description: FC<Props> = (props: Props) => {
-  const { children, className, ...rest } = props;
-  return (
-    <p className={`pb-2 ${className}`} {...rest}>
-      {children}
-    </p>
-  );
+export const Description: FC<Props> = ({ className, ...rest }) => {
+  const descriptionStyle = cn("pb-2");
+  return <p className={descriptionStyle} {...rest} />;
 };

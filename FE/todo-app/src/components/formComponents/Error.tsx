@@ -3,20 +3,13 @@ import { cn } from "@/lib/utils";
 
 type Props = ComponentPropsWithoutRef<"p"> & {
   errorMsg?: string;
-  className?: string;
-  ariaLabel?: string;
-  ariaLive?: "off" | "polite" | "assertive";
-  ariaAtomic?: boolean;
 };
 
-export const Error: FC<Props> = (props: Props) => {
-  const { errorMsg, className, ariaLabel, ariaLive, ariaAtomic, ...rest } = props;
-  const errorClass = cn(`flex justify-center text-red-500 ${className}`);
+export const Error: FC<Props> = ({ errorMsg, ...rest }) => {
+  const errorClass = cn(`flex justify-center text-red-500 `);
   return (
     <div className={errorClass}>
-      <p aria-label={ariaLabel} aria-live={ariaLive} aria-atomic={ariaAtomic} {...rest}>
-        {errorMsg}
-      </p>
+      <p {...rest}>{errorMsg}</p>
     </div>
   );
 };

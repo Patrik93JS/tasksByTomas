@@ -46,7 +46,7 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
           <div className={styles.createToDoContainer}>
             <div className="bg-gray-800 w-1/4">
               <div className="flex justify-end w-100 p-3">
-                <Button onClick={() => closeModal()} buttonType="closeButton" />
+                <Button onClick={closeModal} buttonType="closeButton" />
               </div>
               <div className="border-b  mx-10">
                 <div className="flex justify-center px-4 py-2">Create your ToDo</div>

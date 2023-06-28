@@ -8,8 +8,7 @@ type Props = ComponentPropsWithoutRef<"button"> & {
   children?: ReactNode;
 };
 
-export const Button: FC<Props> = (props: Props) => {
-  const { buttonType, children, ...rest } = props;
+export const Button: FC<Props> = ({ buttonType, children, ...rest }) => {
   const buttonClass = cn(buttonType === "closeButton" ? styles.closeButton : styles.submitButton);
 
   return (

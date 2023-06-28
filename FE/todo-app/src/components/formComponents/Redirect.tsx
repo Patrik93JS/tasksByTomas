@@ -1,16 +1,12 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, HTMLProps, ReactNode } from "react";
 import Link, { LinkProps } from "next/link";
 import styles from "./Components.module.css";
 import { cn } from "@/lib/utils";
 
-type Props = LinkProps & {
-  children?: ReactNode;
-  className?: string;
-};
+// type Props = LinkProps & {};
 
-export const Redirect: FC<Props> = (props: Props) => {
-  const { children, className, ...rest } = props;
-  const linkClass = cn(`${styles.redirect} ${className}`);
+export const Redirect: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = ({ children, ...rest }) => {
+  const linkClass = cn(`${styles.redirect} `);
 
   return (
     <Link className={linkClass} {...rest}>
