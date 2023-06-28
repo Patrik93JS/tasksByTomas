@@ -4,7 +4,7 @@ import styles from "./Components.module.css";
 import { cn } from "@/lib/utils";
 
 export const Redirect: FC<PropsWithChildren<LinkProps>> = ({ children, ...rest }) => {
-  const linkClass = cn(`${styles.redirect} `);
+  const linkClass = cn(styles.redirect);
 
   return (
     <Link className={linkClass} {...rest}>

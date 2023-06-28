@@ -6,7 +6,7 @@ type Props = ComponentPropsWithoutRef<"p"> & {
 };
 
 export const Error: FC<Props> = ({ errorMsg, ...rest }) => {
-  const errorClass = cn(`flex justify-center text-red-500 `);
+  const errorClass = cn("flex justify-center text-red-500");
   return (
     <div className={errorClass}>
       <p {...rest}>{errorMsg}</p>
