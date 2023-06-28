@@ -29,6 +29,8 @@ export const LoginForm = () => {
     if (loginData) router.push("/");
   };
 
+  const { handleSubmit, formState } = methods;
+
   return (
     <div className={styles.loginFormContainer}>
       <div className="bg-gray-800 w-1/4 ">
@@ -37,12 +39,12 @@ export const LoginForm = () => {
           <div className="flex justify-center px-4 py-2">Log to ToDo app</div>
         </div>
         <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Input type="text" placeholder="Username" name="identifier" description="Username" />
-            <Error errorMsg={methods.formState.errors.identifier?.message} />
+            <Error errorMsg={formState.errors.identifier?.message} />
 
             <Input type="password" placeholder="Password" name="password" description="Password" />
-            <Error errorMsg={methods.formState.errors.password?.message} />
+            <Error errorMsg={formState.errors.password?.message} />
 
             <Button buttonType="submitType">Login</Button>
             {isError && <Error errorMsg="wrong username or password" />}
