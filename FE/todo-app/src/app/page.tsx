@@ -1,3 +1,4 @@
+"use client";
 import { ToDo } from "../components/getToDo/ToDo";
 
 export default function Home() {
