@@ -19,6 +19,7 @@ export default function Home() {
               <ToDo
                 title={todo.attributes.title}
                 mustBeCompleted={mustBeCompleted}
+                description={todo.attributes.description}
                 key={todo.id}
                 isOpen={isOpen}
                 open={open}

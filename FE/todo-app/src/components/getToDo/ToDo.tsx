@@ -10,11 +10,12 @@ type Props = {
   title?: string;
   mustBeCompleted?: string;
   isOpen: boolean;
+  description: string;
   open: () => void;
   close: () => void;
 };
 
-export const ToDo: FC<Props> = ({ title, mustBeCompleted, isOpen, open, close }) => {
+export const ToDo: FC<Props> = ({ title, mustBeCompleted, isOpen, description, open, close }) => {
   const content = cn(styles.toDoContent);
   const container = cn(styles.toDoContainer);
   const toDoButtonModal = cn(styles.toDoButtonModal);
@@ -24,6 +25,8 @@ export const ToDo: FC<Props> = ({ title, mustBeCompleted, isOpen, open, close })
       <div className={content}>
         <Description>{title}</Description>
         <Description>{mustBeCompleted}</Description>
+        <Description>{description}</Description>
+
         <Button onClick={open} className={toDoButtonModal}>
           Open ToDo
         </Button>

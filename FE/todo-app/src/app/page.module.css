@@ -1,9 +1,9 @@
 .contentContainer {
-  @apply px-20  mr-auto w-full z-0;
+  @apply px-20  mr-auto w-full z-0 bg-gray-800;
 }
 
 .toDoContainer {
-  @apply grid grid-cols-1 md:grid-cols-4 gap-4 mx-auto place-items-center;
+  @apply grid grid-cols-1 md:grid-cols-5 gap-4 mx-auto place-items-center;
 }
 
 /* .main {
