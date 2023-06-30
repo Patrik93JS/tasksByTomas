@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { createPortal } from "react-dom";
 import { Button } from "../formComponents/Button";
 import { ToDoModal } from "./ToDoModal";
+import { Complete } from "./Complete";
 
 type Props = {
   title?: string;
@@ -23,6 +24,7 @@ export const ToDo: FC<Props> = ({ title, mustBeCompleted, isOpen, description, o
   return !isOpen ? (
     <div className={container}>
       <div className={content}>
+        <Complete />
         <Description>{title}</Description>
         <Description>{mustBeCompleted}</Description>
         <Description>{description}</Description>
