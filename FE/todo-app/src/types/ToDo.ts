@@ -36,3 +36,21 @@ export type GetToDosResponse = ApiResponse<
     };
   }[]
 >;
+export type UpdateToDoRequest = ApiRequest<{
+  title: string;
+  description: string;
+  mustBeCompleted: Date;
+  completed: boolean;
+  to_do_group: number;
+}>;
+
+export type UpdateToDoResponse = ApiResponse<{
+  id: number;
+  attributes: {
+    title: string;
+    description: string;
+    mustBeCompleted: Date;
+    completed: boolean;
+    to_do_group: number;
+  };
+}>;

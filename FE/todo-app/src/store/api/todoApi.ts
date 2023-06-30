@@ -1,5 +1,5 @@
 import { appApi } from ".";
-import { CreateToDoRequest, CreateToDoResponse, GetToDosResponse } from "@/types/ToDo";
+import { CreateToDoRequest, CreateToDoResponse, GetToDosResponse, UpdateToDoRequest, UpdateToDoResponse } from "@/types/ToDo";
 
 export const todoApi = appApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -18,7 +18,14 @@ export const todoApi = appApi.injectEndpoints({
       }),
       invalidatesTags: [{ type: "ToDo" }],
     }),
+    updateToDo: builder.mutation<UpdateToDoResponse, UpdateToDoRequest>({
+      query: ({ ...body }) => ({
+        url: "/api/to-dos/:id  ",
+        method: "PUT",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useCreateToDoMutation, useGetToDosQuery } = todoApi;
+export const { useCreateToDoMutation, useGetToDosQuery, useUpdateToDoMutation } = todoApi;
