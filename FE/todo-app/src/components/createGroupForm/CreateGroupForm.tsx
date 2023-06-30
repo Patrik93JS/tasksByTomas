@@ -5,6 +5,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useCreateGroupMutation } from "@/store/api/groupToDoApi";
 import { Input } from "../formComponents/Input";
 import { Button } from "../formComponents/Button";
+import { Error } from "../formComponents/Error";
 
 type Props = {
   open: boolean;
@@ -32,6 +33,8 @@ export const CreateGroupForm: FC<Props> = ({ open, closeModal }) => {
     closeModal();
   };
 
+  const { handleSubmit, formState } = methods;
+
   return open
     ? createPortal(
         <>
@@ -44,8 +47,9 @@ export const CreateGroupForm: FC<Props> = ({ open, closeModal }) => {
                 <div className="flex justify-center px-4 py-2">Create your group of ToDos</div>
               </div>
               <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <Input type="text" name="title" description="Write a name of group" placeholder="name" />
+                  <Error errorMsg={formState.errors.title?.message} />
                   <Button buttonType="submitType">Create</Button>
                 </form>
               </FormProvider>

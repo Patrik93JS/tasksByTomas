@@ -1,0 +1,23 @@
+.toDoContent {
+  @apply flex justify-center items-center
+    flex-col;
+}
+
+.toDoContainer {
+  @apply p-14 my-10  
+   bg-black hover:bg-green-600  text-green-500 hover:text-white
+    transition-all duration-300 ease-linear
+    hover:rounded-md rounded-xl
+     shadow-xl
+    hover:-translate-y-1
+    max-w-full;
+}
+
+.toDoButtonModal {
+  @apply p-2 mt-3 
+  bg-green-500 text-black 
+hover:bg-black hover:text-white
+  hover:rounded-sm rounded-lg
+  transition-all duration-300 ease-linear
+  cursor-pointer shadow-lg;
+}

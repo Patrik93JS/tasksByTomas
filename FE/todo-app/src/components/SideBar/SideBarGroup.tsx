@@ -16,7 +16,6 @@ export const SideBarGroup: FC<Props> = ({ title, idGroup }) => {
   const handleClick = () => {
     dispatch(setIdGroup(idGroup));
   };
-
   return (
     <button className={`${styles.sidebar} group`} onClick={handleClick}>
       {titleLetter}
