@@ -19,11 +19,14 @@ export const todoApi = appApi.injectEndpoints({
       invalidatesTags: [{ type: "ToDo" }],
     }),
     updateToDo: builder.mutation<UpdateToDoResponse, UpdateToDoRequest>({
-      query: ({ ...body }) => ({
-        url: "/api/to-dos/:id  ",
+      query: ({ id, ...rest }) => ({
+        url: `/api/to-dos/${id}`,
         method: "PUT",
-        body,
+        body: {
+          data: rest,
+        },
       }),
+      invalidatesTags: [{ type: "ToDo" }],
     }),
   }),
 });

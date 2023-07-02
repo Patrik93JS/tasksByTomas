@@ -4,8 +4,8 @@ export type CreateToDoRequest = ApiRequest<{
   title: string;
   description: string;
   mustBeCompleted: Date;
-  // completed: true;
-  // to_do_group: number;
+  completed: boolean;
+  to_do_group: number | null;
 }>;
 
 export type CreateToDoResponse = ApiResponse<{
@@ -15,6 +15,7 @@ export type CreateToDoResponse = ApiResponse<{
     description: string;
     mustBeCompleted: Date;
     completed: boolean;
+    to_do_group: number;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
@@ -36,13 +37,14 @@ export type GetToDosResponse = ApiResponse<
     };
   }[]
 >;
-export type UpdateToDoRequest = ApiRequest<{
+export type UpdateToDoRequest = {
+  id: number;
   title: string;
   description: string;
   mustBeCompleted: Date;
   completed: boolean;
-  to_do_group: number;
-}>;
+  to_do_group: string;
+};
 
 export type UpdateToDoResponse = ApiResponse<{
   id: number;
@@ -51,6 +53,6 @@ export type UpdateToDoResponse = ApiResponse<{
     description: string;
     mustBeCompleted: Date;
     completed: boolean;
-    to_do_group: number;
+    to_do_group: string;
   };
 }>;

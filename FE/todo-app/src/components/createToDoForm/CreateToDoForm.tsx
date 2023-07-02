@@ -6,6 +6,7 @@ import { useCreateToDoMutation } from "@/store/api/todoApi";
 import { Input } from "../formComponents/Input";
 import { Button } from "../formComponents/Button";
 import { Error } from "../formComponents/Error";
+import { useAppSelector } from "@/store/hooks";
 
 type Props = {
   open: boolean;
@@ -16,6 +17,8 @@ export type CreateToDoType = {
   title: string;
   description: string;
   mustBeCompleted: Date;
+  completed: boolean;
+  to_do_group: number | null;
 };
 
 export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
@@ -24,12 +27,14 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
       title: "",
       description: "",
       mustBeCompleted: new Date(),
+      completed: false,
     },
   });
 
   const { handleSubmit, formState } = methods;
 
   const [createToDo] = useCreateToDoMutation();
+  const { idGroup } = useAppSelector(({ idGroupToDo }) => idGroupToDo);
 
   const onSubmit = async (data: CreateToDoType) => {
     const dataForm = {
@@ -37,6 +42,8 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
         title: data.title,
         description: data.description,
         mustBeCompleted: data.mustBeCompleted,
+        completed: data.completed,
+        to_do_group: idGroup,
       },
     };
     createToDo(dataForm);
