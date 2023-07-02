@@ -8,15 +8,16 @@ import { ToDoModal } from "./ToDoModal";
 import { Complete } from "./Complete";
 
 type Props = {
-  title?: string;
+  title: string;
   mustBeCompleted?: string;
   isOpen: boolean;
   description: string;
+  id: number;
   open: () => void;
   close: () => void;
 };
 
-export const ToDo: FC<Props> = ({ title, mustBeCompleted, isOpen, description, open, close }) => {
+export const ToDo: FC<Props> = ({ title, mustBeCompleted, isOpen, description, id, open, close }) => {
   const content = cn(styles.toDoContent);
   const container = cn(styles.toDoContainer);
   const toDoButtonModal = cn(styles.toDoButtonModal);
@@ -24,7 +25,7 @@ export const ToDo: FC<Props> = ({ title, mustBeCompleted, isOpen, description, o
   return !isOpen ? (
     <div className={container}>
       <div className={content}>
-        <Complete />
+        <Complete id={id} title={title} description={description} mustBeCompleted={mustBeCompleted} />
         <Description>{title}</Description>
         <Description>{mustBeCompleted}</Description>
         <Description>{description}</Description>
