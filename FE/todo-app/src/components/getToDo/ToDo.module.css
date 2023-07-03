@@ -1,0 +1,27 @@
+.toDoContent {
+  @apply flex justify-center items-center
+    flex-col;
+}
+
+.toDoContainer {
+  @apply px-14 py-5 my-5  
+   bg-black hover:bg-green-600  text-white hover:text-white
+    transition-all duration-300 ease-linear
+    hover:rounded-md rounded-xl
+     shadow-xl
+    hover:-translate-y-1
+    max-w-full;
+}
+
+.toDoButtonModal {
+  @apply p-2 mt-3 
+  bg-green-500 text-black 
+hover:bg-black hover:text-white
+  hover:rounded-sm rounded-lg
+  transition-all duration-300 ease-linear
+  cursor-pointer shadow-lg;
+}
+
+.completeCheckbox {
+  @apply block relative  cursor-pointer left-20;
+}

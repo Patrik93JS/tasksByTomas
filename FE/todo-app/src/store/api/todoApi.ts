@@ -1,11 +1,11 @@
 import { appApi } from ".";
-import { CreateToDoRequest, CreateToDoResponse, GetToDosResponse } from "@/types/ToDo";
+import { CreateToDoRequest, CreateToDoResponse, GetToDosResponse, UpdateToDoRequest, UpdateToDoResponse } from "@/types/ToDo";
 
 export const todoApi = appApi.injectEndpoints({
   endpoints: (builder) => ({
     getToDos: builder.query<GetToDosResponse, void>({
       query: () => ({
-        url: "api/to-dos",
+        url: "api/to-dos?populate=*",
         method: "GET",
       }),
       providesTags: (result) => (result ? [{ type: "ToDo" }] : []),
@@ -18,7 +18,17 @@ export const todoApi = appApi.injectEndpoints({
       }),
       invalidatesTags: [{ type: "ToDo" }],
     }),
+    updateToDo: builder.mutation<UpdateToDoResponse, UpdateToDoRequest>({
+      query: ({ id, ...rest }) => ({
+        url: `/api/to-dos/${id}`,
+        method: "PUT",
+        body: {
+          data: rest,
+        },
+      }),
+      invalidatesTags: [{ type: "ToDo" }],
+    }),
   }),
 });
 
-export const { useCreateToDoMutation, useGetToDosQuery } = todoApi;
+export const { useCreateToDoMutation, useGetToDosQuery, useUpdateToDoMutation } = todoApi;

@@ -8,15 +8,11 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   filter: invert(0.8);
 }
 
+body {
+  @apply bg-gray-800;
+}
+
 @layer components {
-  .content-container {
-    @apply px-20 py-10 ml-auto mr-auto w-full;
-  }
-
-  .card-group {
-    @apply bg-white rounded overflow-hidden relative gap-x-8 gap-y-4 flex flex-wrap;
-  }
-
   @layer base {
     :root {
       --background: 0 0% 100%;
@@ -84,14 +80,4 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
       --radius: 0.5rem;
     }
   }
-
-  /* @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-} */
 }

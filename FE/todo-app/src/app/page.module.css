@@ -1,4 +1,12 @@
-.main {
+.contentContainer {
+  @apply px-20  mr-auto w-full h-full z-0;
+}
+
+.toDoContainer {
+  @apply grid grid-cols-1 md:grid-cols-5 gap-4 mx-auto place-items-center;
+}
+
+/* .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -107,7 +115,7 @@
 .logo {
   position: relative;
 }
-/* Enable hover only on non-touch devices */
+Enable hover only on non-touch devices
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
     background: rgba(var(--card-rgb), 0.1);
@@ -125,7 +133,7 @@
   }
 }
 
-/* Mobile */
+Mobile
 @media (max-width: 700px) {
   .content {
     padding: 4rem;
@@ -194,7 +202,7 @@
   }
 }
 
-/* Tablet and Smaller Desktop */
+Tablet and Smaller Desktop
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
@@ -218,4 +226,4 @@
   to {
     transform: rotate(0deg);
   }
-}
+} */
