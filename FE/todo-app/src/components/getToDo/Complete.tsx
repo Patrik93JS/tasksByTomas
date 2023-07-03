@@ -1,8 +1,9 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import styles from "./ToDo.module.css";
 import { useUpdateToDoMutation } from "@/store/api/todoApi";
 import { UpdateToDoRequest } from "@/types/ToDo";
-import { useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setComplete } from "@/store/slices/todoCompleteSlice";
 
 type Props = {
   id: number;
@@ -12,17 +13,16 @@ type Props = {
 };
 
 export const Complete: FC<Props> = ({ id, title, description, mustBeCompleted }) => {
-  const [checked, setChecked] = useState(false);
+  const dispatch = useAppDispatch();
+  const checked = useAppSelector((state) => state.todoComplete.todoComplete[id] || false);
 
   const [update] = useUpdateToDoMutation();
   const { idGroup } = useAppSelector(({ idGroupToDo }) => idGroupToDo);
 
   const handleChange = () => {
-    setChecked(!checked);
+    const newChecked = !checked;
+    dispatch(setComplete({ id, checked: newChecked }));
 
-    // if (!checked) {
-    //   return;
-    // }
     const mustBeCompletedFormatted = new Date(mustBeCompleted).toISOString();
 
     const updateData: UpdateToDoRequest = {
@@ -30,7 +30,7 @@ export const Complete: FC<Props> = ({ id, title, description, mustBeCompleted })
       title: title,
       description: description,
       mustBeCompleted: mustBeCompletedFormatted,
-      completed: checked,
+      completed: newChecked,
       to_do_group: idGroup,
     };
     update(updateData);

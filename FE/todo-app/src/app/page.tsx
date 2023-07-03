@@ -11,16 +11,6 @@ export default function Home() {
 
   const { idGroup } = useAppSelector(({ idGroupToDo }) => idGroupToDo);
 
-  console.log("idGroup", idGroup);
-  console.log("data", data);
-  console.log(
-    "data ID",
-    data?.data.map((e) => e.attributes.to_do_group?.data?.id)
-  );
-  console.log(
-    "complete",
-    data?.data.map((e) => e.attributes.completed)
-  );
   return (
     <>
       <main>
