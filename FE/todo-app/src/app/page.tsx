@@ -18,18 +18,7 @@ export default function Home() {
           {data?.data
             .filter((item) => item.attributes.to_do_group?.data?.id == idGroup)
             .map((todo) => {
-              return (
-                <ToDo
-                  id={todo.id}
-                  title={todo.attributes.title}
-                  mustBeCompleted={todo.attributes.mustBeCompleted}
-                  description={todo.attributes.description}
-                  key={todo.id}
-                  isOpen={isOpen}
-                  open={open}
-                  close={close}
-                />
-              );
+              return <ToDo todo={todo} key={todo.id} isOpen={isOpen} open={open} close={close} />;
             })}
         </div>
       </main>
