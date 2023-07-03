@@ -16,7 +16,7 @@ export default function Home() {
       <main>
         <div className={styles.toDoContainer}>
           {data?.data
-            .filter((item) => item.attributes.to_do_group?.data?.id == idGroup)
+            .filter((item) => item.attributes.to_do_group.data?.id == idGroup)
             .map((todo) => {
               return <ToDo todo={todo} key={todo.id} isOpen={isOpen} open={open} close={close} />;
             })}
