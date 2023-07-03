@@ -19,14 +19,14 @@ export default function Home() {
   );
   console.log(
     "complete",
-    data?.data.map((e) => e.attributes)
+    data?.data.map((e) => e.attributes.completed)
   );
   return (
     <>
       <main>
         <div className={styles.toDoContainer}>
           {data?.data
-            // .filter((item) => item.attributes.to_do_group?.data?.id == idGroup)
+            .filter((item) => item.attributes.to_do_group?.data?.id == idGroup)
             .map((todo) => {
               const mustBeCompleted = todo.attributes.mustBeCompleted?.toLocaleString().split("T")[0].split("-").reverse().join("-");
 

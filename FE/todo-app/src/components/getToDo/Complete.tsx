@@ -8,7 +8,7 @@ type Props = {
   id: number;
   title: string;
   description: string;
-  mustBeCompleted?: string;
+  mustBeCompleted: string;
 };
 
 export const Complete: FC<Props> = ({ id, title, description, mustBeCompleted }) => {
@@ -24,12 +24,11 @@ export const Complete: FC<Props> = ({ id, title, description, mustBeCompleted })
       return;
     }
 
-    const mustBeCompletedDate = mustBeCompleted ? new Date(mustBeCompleted) : undefined;
     const updateData: UpdateToDoRequest = {
       id: id,
       title: title,
       description: description,
-      mustBeCompleted: mustBeCompletedDate,
+      mustBeCompleted: mustBeCompleted,
       completed: checked,
       to_do_group: idGroup,
     };
@@ -38,7 +37,7 @@ export const Complete: FC<Props> = ({ id, title, description, mustBeCompleted })
 
   return (
     <div className={styles.completeCheckbox}>
-      <input type="checkbox" onChange={handleChange} />
+      <input type="checkbox" onChange={handleChange} checked={checked} />
     </div>
   );
 };

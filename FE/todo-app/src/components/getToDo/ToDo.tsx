@@ -9,7 +9,7 @@ import { Complete } from "./Complete";
 
 type Props = {
   title: string;
-  mustBeCompleted?: string;
+  mustBeCompleted: string;
   isOpen: boolean;
   description: string;
   id: number;

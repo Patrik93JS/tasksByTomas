@@ -1,57 +1,54 @@
 import { ApiResponse, ApiRequest } from "./Api";
 
+export type createdBy = {
+  data: {
+    id: number;
+    attributes: any;
+  };
+};
+
+export type updatedBy = {
+  data: {
+    id: number;
+    attributes: any;
+  };
+};
+
+export type to_do = {
+  id: number;
+  attributes: {
+    title: string;
+    description: string;
+    mustBeCompleted: string;
+    completed: boolean;
+    to_do_group: {
+      data: {
+        id: number;
+        attributes: any;
+      };
+      createdAt: string[];
+      updatedAt: string[];
+      publishedAt: string[];
+      createdBy: createdBy;
+      updatedBy: updatedBy;
+    };
+  };
+};
+
 export type to_do_group = {
   data: {
     id: number;
     attributes: {
       title: string;
+      users_permissions_user: any;
       to_dos: {
-        data: {
-          id: number;
-          attributes: {
-            title: string;
-            description: string;
-            mustBeCompleted: Date;
-            completed: boolean;
-            to_do_group: {
-              data: {
-                id: number;
-                attributes: {};
-              };
-              createdAt: string;
-              updatedAt: string;
-              publishedAt: string;
-              createdBy: {
-                data: {
-                  id: number;
-                  attributes: {};
-                };
-              };
-              updatedBy: {
-                data: {
-                  id: number;
-                  attributes: {};
-                };
-              };
-            };
-          };
-        };
+        data: to_do[];
       };
       createdAt: string;
       updatedAt: string;
       publishedAt: string;
-      createdBy: {
-        data: {
-          id: number;
-          attributes: {};
-        };
-      };
-      updatedBy: {
-        data: {
-          id: number;
-          attributes: {};
-        };
-      };
+      createdBy: createdBy;
+      updatedBy: updatedBy;
     };
   };
 };
@@ -59,7 +56,7 @@ export type to_do_group = {
 export type CreateToDoRequest = ApiRequest<{
   title: string;
   description: string;
-  mustBeCompleted: Date | undefined;
+  mustBeCompleted: string;
   completed: boolean;
   to_do_group: number | null;
 }>;
@@ -69,7 +66,7 @@ export type CreateToDoResponse = ApiResponse<{
   attributes: {
     title: string;
     description: string;
-    mustBeCompleted: Date | undefined;
+    mustBeCompleted: string;
     completed: boolean;
     to_do_group: to_do_group;
     createdAt: string;
@@ -84,24 +81,14 @@ export type GetToDosResponse = ApiResponse<
     attributes: {
       title: string;
       description: string;
-      mustBeCompleted: Date | undefined;
+      mustBeCompleted: string;
       completed: boolean;
       to_do_group: to_do_group;
       createdAt: string;
       updatedAt: string;
       publishedAt: string;
-      createdBy: {
-        data: {
-          id: number;
-          attributes: {};
-        };
-      };
-      updatedBy: {
-        data: {
-          id: number;
-          attributes: {};
-        };
-      };
+      createdBy: createdBy;
+      updatedBy: updatedBy;
     };
   }[]
 >;
@@ -109,7 +96,7 @@ export type UpdateToDoRequest = {
   id: number;
   title: string;
   description: string;
-  mustBeCompleted: Date | undefined;
+  mustBeCompleted: string;
   completed: boolean;
   to_do_group: number | null;
 };
@@ -119,7 +106,7 @@ export type UpdateToDoResponse = ApiResponse<{
   attributes: {
     title: string;
     description: string;
-    mustBeCompleted: Date | undefined;
+    mustBeCompleted: string;
     completed: boolean;
     to_do_group: to_do_group;
   };

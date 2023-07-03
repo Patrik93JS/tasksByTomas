@@ -5,7 +5,7 @@ export const todoApi = appApi.injectEndpoints({
   endpoints: (builder) => ({
     getToDos: builder.query<GetToDosResponse, void>({
       query: () => ({
-        url: "api/to-dos",
+        url: "api/to-dos?populate=*",
         method: "GET",
       }),
       providesTags: (result) => (result ? [{ type: "ToDo" }] : []),
