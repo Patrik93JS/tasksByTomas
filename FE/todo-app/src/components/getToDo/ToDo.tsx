@@ -21,13 +21,14 @@ export const ToDo: FC<Props> = ({ title, mustBeCompleted, isOpen, description, i
   const content = cn(styles.toDoContent);
   const container = cn(styles.toDoContainer);
   const toDoButtonModal = cn(styles.toDoButtonModal);
+  const mustBeCompletedReverse = mustBeCompleted?.toLocaleString().split("T")[0].split("-").reverse().join("-");
 
   return !isOpen ? (
     <div className={container}>
       <div className={content}>
         <Complete id={id} title={title} description={description} mustBeCompleted={mustBeCompleted} />
         <Description>{title}</Description>
-        <Description>{mustBeCompleted}</Description>
+        <Description>{mustBeCompletedReverse}</Description>
         <Description>{description}</Description>
 
         <Button onClick={open} className={toDoButtonModal}>

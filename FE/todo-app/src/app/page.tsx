@@ -28,13 +28,11 @@ export default function Home() {
           {data?.data
             .filter((item) => item.attributes.to_do_group?.data?.id == idGroup)
             .map((todo) => {
-              const mustBeCompleted = todo.attributes.mustBeCompleted?.toLocaleString().split("T")[0].split("-").reverse().join("-");
-
               return (
                 <ToDo
                   id={todo.id}
                   title={todo.attributes.title}
-                  mustBeCompleted={mustBeCompleted}
+                  mustBeCompleted={todo.attributes.mustBeCompleted}
                   description={todo.attributes.description}
                   key={todo.id}
                   isOpen={isOpen}

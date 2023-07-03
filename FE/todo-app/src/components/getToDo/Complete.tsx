@@ -20,15 +20,16 @@ export const Complete: FC<Props> = ({ id, title, description, mustBeCompleted })
   const handleChange = () => {
     setChecked(!checked);
 
-    if (!checked) {
-      return;
-    }
+    // if (!checked) {
+    //   return;
+    // }
+    const mustBeCompletedFormatted = new Date(mustBeCompleted).toISOString();
 
     const updateData: UpdateToDoRequest = {
       id: id,
       title: title,
       description: description,
-      mustBeCompleted: mustBeCompleted,
+      mustBeCompleted: mustBeCompletedFormatted,
       completed: checked,
       to_do_group: idGroup,
     };
