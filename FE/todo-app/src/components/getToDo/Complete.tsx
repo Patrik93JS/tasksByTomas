@@ -1,34 +1,31 @@
 import React, { FC } from "react";
 import styles from "./ToDo.module.css";
 import { useUpdateToDoMutation } from "@/store/api/todoApi";
-import { UpdateToDoRequest } from "@/types/ToDo";
+import { UpdateToDoRequest, to_do } from "@/types/ToDo";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setComplete } from "@/store/slices/todoCompleteSlice";
 
 type Props = {
-  id: number;
-  title: string;
-  description: string;
-  mustBeCompleted: string;
+  todo: to_do;
 };
 
-export const Complete: FC<Props> = ({ id, title, description, mustBeCompleted }) => {
+export const Complete: FC<Props> = ({ todo }) => {
   const dispatch = useAppDispatch();
-  const checked = useAppSelector((state) => state.todoComplete.todoComplete[id] || false);
+  const checked = useAppSelector((state) => state.todoComplete.todoComplete[todo.id] || false);
 
   const [update] = useUpdateToDoMutation();
   const { idGroup } = useAppSelector(({ idGroupToDo }) => idGroupToDo);
 
   const handleChange = () => {
     const newChecked = !checked;
-    dispatch(setComplete({ id, checked: newChecked }));
+    dispatch(setComplete({ id: todo.id, checked: newChecked }));
 
-    const mustBeCompletedFormatted = new Date(mustBeCompleted).toISOString();
+    const mustBeCompletedFormatted = new Date(todo.attributes.mustBeCompleted).toISOString();
 
     const updateData: UpdateToDoRequest = {
-      id: id,
-      title: title,
-      description: description,
+      id: todo.id,
+      title: todo.attributes.title,
+      description: todo.attributes.description,
       mustBeCompleted: mustBeCompletedFormatted,
       completed: newChecked,
       to_do_group: idGroup,
@@ -38,7 +35,7 @@ export const Complete: FC<Props> = ({ id, title, description, mustBeCompleted })
 
   return (
     <div className={styles.completeCheckbox}>
-      <input type="checkbox" onChange={handleChange} checked={checked} />
+      <input type="checkbox" onChange={handleChange} checked={todo.attributes.completed} />
     </div>
   );
 };

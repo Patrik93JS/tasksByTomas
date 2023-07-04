@@ -8,14 +8,24 @@ import { TopNavigationIcon } from "./TopNavigationIcon";
 import { UserCircle } from "./TopNavigationUserCircle";
 import { CreateGroupForm } from "../createGroupForm/CreateGroupForm";
 import { useModal } from "@/hooks/useModal";
-import { useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { CreateToDoForm } from "../createToDoForm/CreateToDoForm";
+import { setFilter } from "@/store/slices/filterSlice";
 
 export const TopNavigation: FC = () => {
   const { isOpen, open, close } = useModal();
   const { isOpen: isToDoFormOpen, open: openToDoForm, close: closeToDoForm } = useModal();
+  const dispatch = useAppDispatch();
 
   const { idGroup } = useAppSelector(({ idGroupToDo }) => idGroupToDo);
+
+  const handleClickComplete = () => {
+    dispatch(setFilter("complete"));
+  };
+
+  const handleClickAll = () => {
+    dispatch(setFilter("all"));
+  };
 
   return (
     <div className={styles.topNavigation}>
@@ -26,8 +36,8 @@ export const TopNavigation: FC = () => {
       ) : (
         <BsFileEarmarkPlusFill size="28" className={styles.topNavigationIconDisabled} />
       )}
-      <TopNavigationIcon icon={<BsCheckLg size="28" />} text="Completed" />
-      <TopNavigationIcon icon={<BsCollection size="28" />} text="All" />
+      <TopNavigationIcon icon={<BsCheckLg size="28" />} text="Completed" onClick={handleClickComplete} />
+      <TopNavigationIcon icon={<BsCollection size="28" />} text="All" onClick={handleClickAll} />
       <Search />
       <UserCircle />
       <CreateGroupForm open={isOpen} closeModal={close} />
