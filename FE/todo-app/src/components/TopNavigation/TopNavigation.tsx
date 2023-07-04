@@ -1,16 +1,16 @@
-import { FC } from "react";
+import { ChangeEvent, FC } from "react";
 import { BsPlus, BsCheckLg, BsCollection, BsFileEarmarkPlusFill } from "react-icons/bs";
 
 import styles from "./TopNavigation.module.css";
-import { Search } from "./TopNavigationSearch";
-import { Title } from "./TopNavigationTitle";
+import { TopNavigationSearch } from "./TopNavigationSearch";
+import { TopNavigationTitle } from "./TopNavigationTitle";
 import { TopNavigationIcon } from "./TopNavigationIcon";
-import { UserCircle } from "./TopNavigationUserCircle";
+import { TopNavigationUserCircle } from "./TopNavigationUserCircle";
 import { CreateGroupForm } from "../createGroupForm/CreateGroupForm";
 import { useModal } from "@/hooks/useModal";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { CreateToDoForm } from "../createToDoForm/CreateToDoForm";
-import { setFilter } from "@/store/slices/filterSlice";
+import { setFilter, setSearchValue } from "@/store/slices/filterSlice";
 
 export const TopNavigation: FC = () => {
   const { isOpen, open, close } = useModal();
@@ -27,9 +27,15 @@ export const TopNavigation: FC = () => {
     dispatch(setFilter("all"));
   };
 
+  const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    const searchValue = e.target.value;
+    dispatch(setFilter("search"));
+    dispatch(setSearchValue(searchValue));
+  };
+
   return (
     <div className={styles.topNavigation}>
-      <Title />
+      <TopNavigationTitle />
       <TopNavigationIcon icon={<BsPlus size="32" />} text="Add New Group" onClick={open} />
       {idGroup ? (
         <TopNavigationIcon icon={<BsFileEarmarkPlusFill size="28" />} text="Add New ToDo" onClick={openToDoForm} />
@@ -38,8 +44,8 @@ export const TopNavigation: FC = () => {
       )}
       <TopNavigationIcon icon={<BsCheckLg size="28" />} text="Completed" onClick={handleClickComplete} />
       <TopNavigationIcon icon={<BsCollection size="28" />} text="All" onClick={handleClickAll} />
-      <Search />
-      <UserCircle />
+      <TopNavigationSearch onChange={handleChangeSearch} />
+      <TopNavigationUserCircle />
       <CreateGroupForm open={isOpen} closeModal={close} />
       <CreateToDoForm open={isToDoFormOpen} closeModal={closeToDoForm} />
     </div>

@@ -24,13 +24,7 @@ export const ToDo: FC<Props> = ({ todo, isOpen, open, close }) => {
   return !isOpen ? (
     <div className={container}>
       <div className={content}>
-        <Complete
-          todo={todo}
-          // id={todo.id}
-          // title={todo.attributes.title}
-          // description={todo.attributes.description}
-          // mustBeCompleted={todo.attributes.mustBeCompleted}
-        />
+        <Complete todo={todo} />
         <Description>{todo.attributes.title}</Description>
         <Description>{mustBeCompletedReverse}</Description>
         <Description>{todo.attributes.description}</Description>

@@ -8,7 +8,7 @@ import { useAppDispatch } from "@/store/hooks";
 import { tokenSlice } from "@/store/slices/tokenSlice";
 import { appApi } from "@/store/api";
 
-export const UserCircle: FC = () => {
+export const TopNavigationUserCircle: FC = () => {
   const { isOpen, toggle } = useModal();
 
   const data = useMeQuery();
