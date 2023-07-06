@@ -7,7 +7,7 @@ import { Button } from "../formComponents/Button";
 import { ToDoModal } from "./ToDoModal";
 import { Complete } from "./Complete";
 import { to_do } from "@/types/ToDo";
-import { MdDelete } from "react-icons/md";
+import { DeleteToDo } from "./DeleteToDo";
 
 type Props = {
   todo: to_do;
@@ -33,9 +33,11 @@ export const ToDo: FC<Props> = ({ todo, isOpen, open, close }) => {
         <Button onClick={open} className={toDoButtonModal}>
           Open ToDo
         </Button>
-        <Button className={toDoButtonModal}>
+
+        {/* <Button className={toDoButtonDelete} onClick={() => deleteToDo(todo.id)}>
           <MdDelete />
-        </Button>
+        </Button> */}
+        <DeleteToDo todo={todo} />
       </div>
     </div>
   ) : (
