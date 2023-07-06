@@ -6,13 +6,13 @@ import { useFilteredToDos } from "../hooks/useFilterToDo";
 
 export default function Home() {
   const { isOpen, open, close } = useModal();
-  const { useFilteredToDo } = useFilteredToDos();
+  const { filteredTodos } = useFilteredToDos();
 
   return (
     <>
       <main>
         <div className={styles.toDoContainer}>
-          {useFilteredToDo?.map((todo) => {
+          {filteredTodos?.map((todo) => {
             return <ToDo todo={todo} key={todo.id} isOpen={isOpen} open={open} close={close} />;
           })}
         </div>

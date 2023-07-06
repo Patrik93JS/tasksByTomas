@@ -27,7 +27,7 @@ export const useFilteredToDos = () => {
     return idGroupData;
   }, [data?.data, idGroup]);
 
-  const useFilteredToDo = useMemo(() => {
+  const filteredTodos = useMemo(() => {
     if (filter === "complete") {
       return handleComplete();
     } else if (filter === "search") {
@@ -39,5 +39,5 @@ export const useFilteredToDos = () => {
     }
   }, [filter, handleComplete, handleSearch, data?.data, handleIdGroup]);
 
-  return { useFilteredToDo };
+  return { filteredTodos };
 };
