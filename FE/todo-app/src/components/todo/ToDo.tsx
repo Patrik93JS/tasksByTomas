@@ -29,11 +29,9 @@ export const ToDo: FC<Props> = ({ todo, isOpen, open, close }) => {
         <Description>{todo.attributes.title}</Description>
         <Description>{mustBeCompletedReverse}</Description>
         <Description>{todo.attributes.description}</Description>
-
         <Button onClick={open} className={toDoButtonModal}>
           Open ToDo
         </Button>
-
         <DeleteToDo todo={todo} />
       </div>
     </div>

@@ -44,9 +44,13 @@ export const EditToDo: FC<Props> = ({ todo }) => {
         <div>
           <ReactQuill theme="snow" modules={toolbarOptions} value={value} onChange={handleChange} readOnly={!edit} />
         </div>
-        <div className="pt-5">
-          {!edit && <Button onClick={handleEdit}>Edit</Button>}
-          {edit && <Button onClick={handleSave}>Uložit</Button>}
+        <div className="pt-5 flex justify-center">
+          {!edit && (
+            <Button className={styles.editButton} onClick={handleEdit}>
+              Edit
+            </Button>
+          )}
+          {edit && <Button onClick={handleSave}>Save</Button>}
         </div>
       </div>
     </>
