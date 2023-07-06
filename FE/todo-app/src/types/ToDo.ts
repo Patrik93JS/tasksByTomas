@@ -94,3 +94,16 @@ export type UpdateToDoResponse = ApiResponse<{
     };
   };
 }>;
+
+export type DeleteToDoResponse = ApiResponse<{
+  id: number;
+  attributes: {
+    title: string;
+    description: string;
+    mustBeCompleted: string;
+    completed: boolean;
+    to_do_group: {
+      data: to_do_group;
+    };
+  };
+}>;
