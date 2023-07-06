@@ -17,8 +17,8 @@ type Props = {
 };
 
 export const ToDo: FC<Props> = ({ todo, isOpen, open, close }) => {
-  const content = cn(styles.toDoContent);
   const container = cn(styles.toDoContainer);
+  const content = cn(styles.toDoContent);
   const toDoButtonModal = cn(styles.toDoButtonModal);
   const mustBeCompletedReverse = todo.attributes.mustBeCompleted?.toLocaleString().split("T")[0].split("-").reverse().join("-");
 

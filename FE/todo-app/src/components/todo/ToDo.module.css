@@ -10,7 +10,8 @@
     hover:rounded-md rounded-xl
      shadow-xl
     hover:-translate-y-1
-    max-w-full;
+    max-w-full
+    break-all;
 }
 
 .toDoButtonModal {

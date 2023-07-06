@@ -17,6 +17,7 @@ export const EditToDo: FC<Props> = ({ todo }) => {
   const [edit, setEdit] = useState(false);
   const [update] = useUpdateToDoMutation();
   const editButton = cn(styles.editButton);
+  const buttons = cn("pt-5 flex justify-center");
 
   const handleChange = (content: string) => {
     setValue(content);
@@ -46,7 +47,7 @@ export const EditToDo: FC<Props> = ({ todo }) => {
         <div>
           <ReactQuill theme="snow" modules={toolbarOptions} value={value} onChange={handleChange} readOnly={!edit} />
         </div>
-        <div className="pt-5 flex justify-center">
+        <div className={buttons}>
           {!edit && (
             <Button className={editButton} onClick={handleEdit}>
               Edit
