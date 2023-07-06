@@ -52,3 +52,20 @@ hover:bg-red-500 hover:text-black
   rounded-xl
    bg-opacity-50 z-10 text-green-500;
 }
+
+.toDoModalContainer {
+  @apply h-screen w-full fixed left-0 top-0 
+  flex justify-center items-center bg-black
+  rounded-xl
+   bg-opacity-50 z-10 text-green-500;
+}
+
+.row {
+  @apply h-full
+  w-full
+  flex justify-center items-center;
+}
+
+.editToDo {
+  @apply w-full flex justify-center;
+}

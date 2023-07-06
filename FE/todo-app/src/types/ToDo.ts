@@ -19,6 +19,7 @@ export type to_do = {
   attributes: {
     title: string;
     description: string;
+    longDescription: string;
     mustBeCompleted: string;
     completed: boolean;
     to_do_group: {
@@ -51,6 +52,7 @@ export type to_do_group = {
 export type CreateToDoRequest = ApiRequest<{
   title: string;
   description: string;
+  longDescription: string;
   mustBeCompleted: string;
   completed: boolean;
   to_do_group: number | null;
@@ -61,6 +63,7 @@ export type CreateToDoResponse = ApiResponse<{
   attributes: {
     title: string;
     description: string;
+    longDescription: string;
     mustBeCompleted: string;
     completed: boolean;
     to_do_group: {
@@ -77,6 +80,7 @@ export type UpdateToDoRequest = {
   id: number;
   title: string;
   description: string;
+  longDescription: string;
   mustBeCompleted: string;
   completed: boolean;
   to_do_group: number | null;
@@ -87,6 +91,7 @@ export type UpdateToDoResponse = ApiResponse<{
   attributes: {
     title: string;
     description: string;
+    longDescription: string;
     mustBeCompleted: string;
     completed: boolean;
     to_do_group: {
