@@ -34,9 +34,6 @@ export const ToDo: FC<Props> = ({ todo, isOpen, open, close }) => {
           Open ToDo
         </Button>
 
-        {/* <Button className={toDoButtonDelete} onClick={() => deleteToDo(todo.id)}>
-          <MdDelete />
-        </Button> */}
         <DeleteToDo todo={todo} />
       </div>
     </div>
