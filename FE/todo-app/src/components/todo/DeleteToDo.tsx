@@ -20,6 +20,6 @@ export const DeleteToDo: FC<Props> = ({ todo }) => {
       <MdDelete />
     </Button>
   ) : (
-    createPortal(<DeleteModal close={close} title={todo.attributes.title} />, document.body)
+    createPortal(<DeleteModal close={close} title={todo.attributes.title} todo={todo} />, document.body)
   );
 };

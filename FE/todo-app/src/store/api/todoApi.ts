@@ -1,12 +1,5 @@
 import { appApi } from ".";
-import {
-  CreateToDoRequest,
-  CreateToDoResponse,
-  DeleteToDoResponse,
-  GetToDosResponse,
-  UpdateToDoRequest,
-  UpdateToDoResponse,
-} from "@/types/ToDo";
+import { CreateToDoRequest, CreateToDoResponse, GetToDosResponse, UpdateToDoRequest, UpdateToDoResponse } from "@/types/ToDo";
 
 export const todoApi = appApi.injectEndpoints({
   endpoints: (builder) => ({
