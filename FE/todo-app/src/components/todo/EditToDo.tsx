@@ -6,6 +6,7 @@ import { toolbarOptions } from "./toolbarOptions";
 import { UpdateToDoRequest, to_do } from "@/types/ToDo";
 import { useUpdateToDoMutation } from "@/store/api/todoApi";
 import { Button } from "../formComponents/Button";
+import { cn } from "@/lib/utils";
 
 type Props = {
   todo: to_do;
@@ -15,6 +16,7 @@ export const EditToDo: FC<Props> = ({ todo }) => {
   const [value, setValue] = useState("");
   const [edit, setEdit] = useState(false);
   const [update] = useUpdateToDoMutation();
+  const editButton = cn(styles.editButton);
 
   const handleChange = (content: string) => {
     setValue(content);
@@ -46,7 +48,7 @@ export const EditToDo: FC<Props> = ({ todo }) => {
         </div>
         <div className="pt-5 flex justify-center">
           {!edit && (
-            <Button className={styles.editButton} onClick={handleEdit}>
+            <Button className={editButton} onClick={handleEdit}>
               Edit
             </Button>
           )}

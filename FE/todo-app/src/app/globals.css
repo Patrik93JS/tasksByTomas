@@ -51,7 +51,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   border-bottom-left-radius: 1.5em;
   border-bottom-right-radius: 1.5em;
   background: rgb(32, 34, 37);
-  color: black;
+  color: white;
 }
 
 body {
