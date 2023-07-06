@@ -7,6 +7,7 @@ import { Button } from "../formComponents/Button";
 import { ToDoModal } from "./ToDoModal";
 import { Complete } from "./Complete";
 import { to_do } from "@/types/ToDo";
+import { DeleteToDo } from "./DeleteToDo";
 
 type Props = {
   todo: to_do;
@@ -32,6 +33,8 @@ export const ToDo: FC<Props> = ({ todo, isOpen, open, close }) => {
         <Button onClick={open} className={toDoButtonModal}>
           Open ToDo
         </Button>
+
+        <DeleteToDo todo={todo} />
       </div>
     </div>
   ) : (

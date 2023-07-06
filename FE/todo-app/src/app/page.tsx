@@ -1,5 +1,5 @@
 "use client";
-import { ToDo } from "../components/getToDo/ToDo";
+import { ToDo } from "../components/todo/ToDo";
 import styles from "./page.module.css";
 import { useModal } from "@/hooks/useModal";
 import { useFilteredToDos } from "../hooks/useFilterToDo";

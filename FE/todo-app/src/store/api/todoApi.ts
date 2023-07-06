@@ -28,7 +28,14 @@ export const todoApi = appApi.injectEndpoints({
       }),
       invalidatesTags: [{ type: "ToDo" }],
     }),
+    deleteToDo: builder.mutation({
+      query: (id) => ({
+        url: `/api/to-dos/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [{ type: "ToDo" }],
+    }),
   }),
 });
 
-export const { useCreateToDoMutation, useGetToDosQuery, useUpdateToDoMutation } = todoApi;
+export const { useCreateToDoMutation, useGetToDosQuery, useUpdateToDoMutation, useDeleteToDoMutation } = todoApi;
