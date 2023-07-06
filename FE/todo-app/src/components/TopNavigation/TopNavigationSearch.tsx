@@ -1,17 +1,19 @@
-import { FC } from "react";
+import { ChangeEvent, FC } from "react";
 import { FaSearch } from "react-icons/fa";
 import styles from "./TopNavigation.module.css";
+import { cn } from "@/lib/utils";
 
-export const Search: FC = () => (
-  <div className={styles.topNavigationSearch}>
-    <input
-      className={styles.topNavigationSearchInput}
-      type="text"
-      placeholder="Search..."
-    />
-    <FaSearch
-      size="18"
-      className={`${styles.topNavigationSearchIcon} my-auto`}
-    />
-  </div>
-);
+type Props = {
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+};
+
+export const TopNavigationSearch: FC<Props> = ({ onChange }) => {
+  const searchClass = cn(`${styles.topNavigationSearchIcon} my-auto`);
+
+  return (
+    <div className={styles.topNavigationSearch}>
+      <input className={styles.topNavigationSearchInput} type="text" placeholder="Search..." onChange={onChange} />
+      <FaSearch size="18" className={searchClass} />
+    </div>
+  );
+};

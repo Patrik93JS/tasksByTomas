@@ -1,6 +1,4 @@
 import { FC } from "react";
 import styles from "./TopNavigation.module.css";
 
-export const Title: FC = () => (
-  <h5 className={styles.topNavigationTitleText}>ToDo Application</h5>
-);
+export const TopNavigationTitle: FC = () => <h5 className={styles.topNavigationTitleText}>ToDo Application</h5>;

@@ -22,16 +22,13 @@ export type to_do = {
     mustBeCompleted: string;
     completed: boolean;
     to_do_group: {
-      data: {
-        id: number;
-        attributes: any;
-      };
-      createdAt: string[];
-      updatedAt: string[];
-      publishedAt: string[];
-      createdBy: createdBy;
-      updatedBy: updatedBy;
+      data: to_do_group;
     };
+    createdAt: string[];
+    updatedAt: string[];
+    publishedAt: string[];
+    createdBy: createdBy;
+    updatedBy: updatedBy;
   };
 };
 
@@ -75,25 +72,7 @@ export type CreateToDoResponse = ApiResponse<{
   };
 }>;
 
-export type GetToDosResponse = ApiResponse<
-  {
-    id: number;
-    attributes: {
-      title: string;
-      description: string;
-      mustBeCompleted: string;
-      completed: boolean;
-      to_do_group: {
-        data: to_do_group;
-      };
-      createdAt: string;
-      updatedAt: string;
-      publishedAt: string;
-      createdBy: createdBy;
-      updatedBy: updatedBy;
-    };
-  }[]
->;
+export type GetToDosResponse = ApiResponse<to_do[]>;
 export type UpdateToDoRequest = {
   id: number;
   title: string;

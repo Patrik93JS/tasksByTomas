@@ -6,18 +6,10 @@ import { createPortal } from "react-dom";
 import { Button } from "../formComponents/Button";
 import { ToDoModal } from "./ToDoModal";
 import { Complete } from "./Complete";
-
-type ToDoAttributes = {
-  id: number;
-  attributes: {
-    title: string;
-    mustBeCompleted: string;
-    description: string;
-  };
-};
+import { to_do } from "@/types/ToDo";
 
 type Props = {
-  todo: ToDoAttributes;
+  todo: to_do;
   isOpen: boolean;
   open: () => void;
   close: () => void;
@@ -32,12 +24,7 @@ export const ToDo: FC<Props> = ({ todo, isOpen, open, close }) => {
   return !isOpen ? (
     <div className={container}>
       <div className={content}>
-        <Complete
-          id={todo.id}
-          title={todo.attributes.title}
-          description={todo.attributes.description}
-          mustBeCompleted={todo.attributes.mustBeCompleted}
-        />
+        <Complete todo={todo} />
         <Description>{todo.attributes.title}</Description>
         <Description>{mustBeCompletedReverse}</Description>
         <Description>{todo.attributes.description}</Description>

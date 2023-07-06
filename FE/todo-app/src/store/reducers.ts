@@ -4,6 +4,7 @@ import { createGroupToDo } from "./slices/createGroupToDo";
 import { tokenSlice } from "./slices/tokenSlice";
 import { idGroupToDoSlice } from "./slices/idGroupToDo";
 import { todoCompleteSlice } from "./slices/todoCompleteSlice";
+import { filterSlice } from "./slices/filterSlice";
 
 export const appReducer = combineReducers({
   [appApi.reducerPath]: appApi.reducer,
@@ -11,4 +12,5 @@ export const appReducer = combineReducers({
   [tokenSlice.name]: tokenSlice.reducer,
   [idGroupToDoSlice.name]: idGroupToDoSlice.reducer,
   [todoCompleteSlice.name]: todoCompleteSlice.reducer,
+  [filterSlice.name]: filterSlice.reducer,
 });

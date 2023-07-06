@@ -2,6 +2,7 @@ import { FC } from "react";
 import styles from "./SideBar.module.css";
 import { useAppDispatch } from "@/store/hooks";
 import { setIdGroup } from "@/store/slices/idGroupToDo";
+import { setFilter } from "@/store/slices/filterSlice";
 
 type Props = {
   title: string | null;
@@ -15,6 +16,7 @@ export const SideBarGroup: FC<Props> = ({ title, idGroup }) => {
 
   const handleClick = () => {
     dispatch(setIdGroup(idGroup));
+    dispatch(setFilter(""));
   };
   return (
     <button className={`${styles.sidebar} group`} onClick={handleClick}>
