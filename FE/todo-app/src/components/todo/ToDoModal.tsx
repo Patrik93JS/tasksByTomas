@@ -11,6 +11,7 @@ type Props = {
 };
 
 export const ToDoModal: FC<Props> = ({ close, todo }) => {
+  console.log(todo.attributes.longDescription);
   return (
     <div className={styles.toDoModalContainer}>
       <div className="bg-gray-800 w-1/2 h-1/2 ">
@@ -20,8 +21,10 @@ export const ToDoModal: FC<Props> = ({ close, todo }) => {
         <div className="flex justify-center p-5 flex-col text-center">
           <Description>{todo.attributes.title}</Description>
           <Description>{todo.attributes.description}</Description>
+          <Description>{todo.attributes.longDescription}</Description>
         </div>
-        <EditToDo />
+
+        {todo.attributes.longDescription ? todo.attributes.longDescription : <EditToDo />}
       </div>
     </div>
   );

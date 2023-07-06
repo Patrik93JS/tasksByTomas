@@ -60,12 +60,7 @@ hover:bg-red-500 hover:text-black
    bg-opacity-50 z-10 text-green-500;
 }
 
-.row {
-  @apply h-full
-  w-full
-  flex justify-center items-center;
-}
-
 .editToDo {
-  @apply w-full flex justify-center;
+  @apply w-full flex justify-center
+  p-5 h-1/4;
 }
