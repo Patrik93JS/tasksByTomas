@@ -18,3 +18,9 @@
     transition-all duration-300 scale-0 origin-left
     z-20;
 }
+
+.container {
+  @apply fixed top-0 left-0
+   h-screen w-16 mt-0 flex flex-col
+   bg-myPrimary text-white shadow-lg;
+}
