@@ -10,7 +10,7 @@ export const useFilteredToDos = () => {
 
   const handleSearch = useCallback(() => {
     const filteredData = data?.data.filter(
-      (item) => item.attributes.to_do_group.data.id === idGroup && item.attributes.title.includes(searchValue)
+      (item) => item.attributes.to_do_group.data?.id === idGroup && item.attributes.title.includes(searchValue)
     );
     return filteredData;
   }, [data?.data, idGroup, searchValue]);
@@ -22,7 +22,7 @@ export const useFilteredToDos = () => {
 
   const handleIdGroup = useCallback(() => {
     const idGroupData = data?.data.filter(
-      (item) => item.attributes.to_do_group.data.id === idGroup && item.attributes.to_do_group.data.id === idGroup
+      (item) => item.attributes.to_do_group.data?.id === idGroup && item.attributes.to_do_group.data.id === idGroup
     );
     return idGroupData;
   }, [data?.data, idGroup]);

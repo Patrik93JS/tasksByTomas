@@ -18,7 +18,14 @@ export const groupApi = appApi.injectEndpoints({
       }),
       invalidatesTags: [{ type: "Group" }],
     }),
+    deleteGroup: builder.mutation({
+      query: (id) => ({
+        url: `/api/to-do-groups/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [{ type: "Group" }],
+    }),
   }),
 });
 
-export const { useCreateGroupMutation, useGetGroupsQuery } = groupApi;
+export const { useCreateGroupMutation, useGetGroupsQuery, useDeleteGroupMutation } = groupApi;
