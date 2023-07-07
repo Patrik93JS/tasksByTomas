@@ -10,8 +10,8 @@ export const SideBar: FC = () => {
 
   return (
     <div className={container}>
-      {data?.data.map((group) => {
-        return <SideBarGroup title={group.attributes.title} key={group.id} idGroup={group.id} />;
+      {data?.data.map((group, index) => {
+        return <SideBarGroup title={group.attributes.title} key={`${group.id} + ${index}`} idGroup={group.id} />;
       })}
     </div>
   );
