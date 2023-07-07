@@ -1,22 +1,32 @@
 import React, { FC } from "react";
 import { Button } from "../formComponents/Button";
+import { EditToDo } from "./EditToDo";
+import styles from "./ToDo.module.css";
+import { to_do } from "@/types/ToDo";
+import { Description } from "../formComponents/Description";
+import { cn } from "@/lib/utils";
 
 type Props = {
+  todo: to_do;
   close: () => void;
 };
 
-export const ToDoModal: FC<Props> = ({ close }) => {
+export const ToDoModal: FC<Props> = ({ close, todo }) => {
+  const modal = cn("bg-gray-800 w-1/2 h-auto ");
+  const buttonClass = cn("flex justify-end p-3");
+  const content = cn("flex justify-center p-5 flex-col text-center");
+
   return (
-    <div
-      className="h-screen w-full fixed left-0 top-0 
-  flex justify-center items-center bg-black
-  rounded-xl
-   bg-opacity-50 z-10 text-green-500"
-    >
-      <div className="bg-gray-800 w-1/4">
-        ToDoModal
-        <div className="flex justify-end w-100 p-3">
+    <div className={styles.toDoModalContainer}>
+      <div className={modal}>
+        <div className={buttonClass}>
           <Button onClick={close} buttonType="closeButton" />
+        </div>
+        <div className={content}>
+          <Description>{todo.attributes.title}</Description>
+          <Description>{todo.attributes.description}</Description>
+          <div className="break-all" dangerouslySetInnerHTML={{ __html: todo.attributes.longDescription }}></div>
+          <EditToDo todo={todo} />
         </div>
       </div>
     </div>

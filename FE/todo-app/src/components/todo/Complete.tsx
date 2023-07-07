@@ -26,6 +26,7 @@ export const Complete: FC<Props> = ({ todo }) => {
       id: todo.id,
       title: todo.attributes.title,
       description: todo.attributes.description,
+      longDescription: todo.attributes.longDescription,
       mustBeCompleted: mustBeCompletedFormatted,
       completed: newChecked,
       to_do_group: idGroup,
