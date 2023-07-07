@@ -39,7 +39,7 @@ export const SideBarGroup: FC<Props> = ({ title, idGroup }) => {
       <span className={`${styles.sidebarTooltip} group-hover:scale-100`}>{title}</span>
 
       {showDeleteButton && isSelected && (
-        <button className="absolute pt-16" onClick={open}>
+        <button className="absolute pt-16 mt-5" onClick={open}>
           <MdDelete size={24} color="red" />
         </button>
       )}
