@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./SideBar.module.css";
-import { useAppDispatch } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setIdGroup } from "@/store/slices/idGroupToDo";
 import { setFilter } from "@/store/slices/filterSlice";
 
@@ -11,15 +11,18 @@ type Props = {
 
 export const SideBarGroup: FC<Props> = ({ title, idGroup }) => {
   const dispatch = useAppDispatch();
-
   const titleLetter = title?.charAt(0).toUpperCase();
+  const selectedGroupId = useAppSelector(({ idGroupToDo }) => idGroupToDo.idGroup);
 
   const handleClick = () => {
     dispatch(setIdGroup(idGroup));
     dispatch(setFilter(""));
   };
+
+  const isSelected = selectedGroupId === idGroup;
+
   return (
-    <button className={`${styles.sidebar} group`} onClick={handleClick}>
+    <button className={`${isSelected ? styles.groupSelected : styles.sidebar} group`} onClick={handleClick}>
       {titleLetter}
       <span className={`${styles.sidebarTooltip} group-hover:scale-100`}>{title}</span>
     </button>
