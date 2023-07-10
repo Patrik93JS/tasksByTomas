@@ -11,6 +11,7 @@ import { useModal } from "@/hooks/useModal";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { CreateToDoForm } from "../createToDoForm/CreateToDoForm";
 import { setFilter, setSearchValue } from "@/store/slices/filterSlice";
+import { setIdGroup } from "@/store/slices/idGroupToDo";
 
 export const TopNavigation: FC = () => {
   const { isOpen, open, close } = useModal();
@@ -25,6 +26,7 @@ export const TopNavigation: FC = () => {
 
   const handleClickAll = () => {
     dispatch(setFilter("all"));
+    dispatch(setIdGroup(null));
   };
 
   const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {

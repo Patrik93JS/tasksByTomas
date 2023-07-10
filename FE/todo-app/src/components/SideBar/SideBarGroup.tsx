@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { useState } from "react";
 import styles from "./SideBar.module.css";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setIdGroup } from "@/store/slices/idGroupToDo";
@@ -17,8 +16,7 @@ type Props = {
 export const SideBarGroup: FC<Props> = ({ title, idGroup }) => {
   const dispatch = useAppDispatch();
   const titleLetter = title?.charAt(0).toUpperCase();
-  const selectedGroupId = useAppSelector(({ idGroupToDo }) => idGroupToDo.idGroup);
-  const [showDeleteButton, setShowDeleteButton] = useState(false);
+  const selectedGroupId = useAppSelector(({ idGroupToDo }) => idGroupToDo.idGroup); // TODO vytahnout dole neposilat to tam
   const { isOpen, open, close } = useModal();
 
   const handleClick = () => {
@@ -29,21 +27,17 @@ export const SideBarGroup: FC<Props> = ({ title, idGroup }) => {
   const isSelected = selectedGroupId === idGroup;
 
   return !isOpen ? (
-    <button
-      className={`${isSelected ? styles.groupSelected : styles.sidebar} group`}
-      onClick={handleClick}
-      onMouseEnter={() => setShowDeleteButton(true)}
-      onMouseLeave={() => setShowDeleteButton(false)}
-    >
-      {titleLetter}
-      <span className={`${styles.sidebarTooltip} group-hover:scale-100`}>{title}</span>
-
-      {showDeleteButton && isSelected && (
-        <button className="absolute pt-16 mt-5" onClick={open}>
+    <div>
+      <button className={`${isSelected ? styles.groupSelected : styles.sidebar} group`} onClick={handleClick}>
+        {titleLetter}
+        <span className={`${styles.sidebarTooltip} group-hover:scale-100`}>{title}</span>
+      </button>
+      {isSelected && (
+        <button className="absolute pt-2 pl-5 duration-900" onClick={open}>
           <MdDelete size={24} color="red" />
         </button>
       )}
-    </button>
+    </div>
   ) : (
     createPortal(<DeleteGroupModal close={close} title={title} selectedId={selectedGroupId} />, document.body)
   );

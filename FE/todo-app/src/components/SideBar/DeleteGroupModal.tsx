@@ -15,17 +15,27 @@ type Props = {
 export const DeleteGroupModal: FC<Props> = ({ close, title, selectedId }) => {
   const [deleteGroup, { isSuccess }] = useDeleteGroupMutation();
   const [deleteToDo] = useDeleteToDoMutation();
-  const { data } = useGetGroupsQuery();
+  const { data: dataGroup } = useGetGroupsQuery();
   const dispatch = useAppDispatch();
-  const toDos = data?.data.map((e) => e.attributes.to_dos?.data.map((f) => f.id));
+  // const toDos: number[] = dataGroup?.data.map((e) => e.attributes.to_dos.data.map((f) => f.id));
 
-  const handleDeleteGroup = () => {
-    deleteToDo(toDos);
-    deleteGroup(selectedId);
+  const handleDeleteGroup = async () => {
+    if (!dataGroup) {
+      return;
+    }
+
+    const toDos = dataGroup?.data?.find((group) => group.id == selectedId)?.attributes.to_dos.data.map((todo) => todo.id);
+
+    if (!toDos) {
+      return;
+    }
+    console.log("dataGroup", toDos);
+
+    await Promise.all(toDos?.map((todo) => deleteToDo(todo).unwrap()));
+    await deleteGroup(selectedId);
     dispatch(setIdGroup(null));
 
     isSuccess && close();
-    console.log(toDos);
   };
 
   return (

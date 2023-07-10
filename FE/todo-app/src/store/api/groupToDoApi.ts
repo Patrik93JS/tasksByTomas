@@ -5,7 +5,7 @@ export const groupApi = appApi.injectEndpoints({
   endpoints: (builder) => ({
     getGroups: builder.query<GetGroupResponse, void>({
       query: () => ({
-        url: "api/to-do-groups",
+        url: "api/to-do-groups?populate=*",
         method: "GET",
       }),
       providesTags: (result) => (result ? [{ type: "Group" }] : []),
@@ -23,7 +23,7 @@ export const groupApi = appApi.injectEndpoints({
         url: `/api/to-do-groups/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: [{ type: "Group" }],
+      invalidatesTags: [{ type: "Group" }, { type: "ToDo" }],
     }),
   }),
 });
