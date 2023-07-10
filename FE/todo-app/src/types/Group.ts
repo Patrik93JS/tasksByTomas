@@ -1,8 +1,9 @@
 import { ApiRequest, ApiResponse } from "./Api";
+import { to_do } from "./ToDo";
 
 export type CreateGroupToDoRequest = ApiRequest<{
   title: string;
-  to_dos: number | string;
+  to_dos: to_do[];
 }>;
 
 export type CreateGroupToDoResponse = ApiResponse<{
@@ -10,10 +11,7 @@ export type CreateGroupToDoResponse = ApiResponse<{
   attributes: {
     title: string;
     to_dos: {
-      data: {
-        id: number;
-        attributes: {};
-      };
+      data: to_do[];
     };
   };
 }>;
@@ -24,10 +22,7 @@ export type GetGroupResponse = ApiResponse<
     attributes: {
       title: string;
       to_dos: {
-        data: {
-          id: number;
-          attributes: {};
-        };
+        data: to_do[];
       };
       createdAt: string;
       publishedAt: string;
