@@ -16,7 +16,8 @@ type Props = {
 export type CreateToDoType = {
   title: string;
   description: string;
-  mustBeCompleted: Date;
+  longDescription: string;
+  mustBeCompleted: string;
   completed: boolean;
   to_do_group: number | null;
 };
@@ -26,7 +27,8 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
     defaultValues: {
       title: "",
       description: "",
-      mustBeCompleted: new Date(),
+      longDescription: "",
+      mustBeCompleted: "",
       completed: false,
     },
   });
@@ -41,6 +43,7 @@ export const CreateToDoForm: FC<Props> = ({ open, closeModal }) => {
       data: {
         title: data.title,
         description: data.description,
+        longDescription: data.longDescription,
         mustBeCompleted: data.mustBeCompleted,
         completed: data.completed,
         to_do_group: idGroup,

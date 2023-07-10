@@ -3,36 +3,36 @@ import { Button } from "../formComponents/Button";
 import styles from "./SideBar.module.css";
 import { useDeleteGroupMutation, useGetGroupsQuery } from "@/store/api/groupToDoApi";
 import { useDeleteToDoMutation } from "@/store/api/todoApi";
-import { useAppDispatch } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setIdGroup } from "@/store/slices/idGroupToDo";
 
 type Props = {
   title: string | null;
   close: () => void;
-  selectedId: number | null;
 };
 
-export const DeleteGroupModal: FC<Props> = ({ close, title, selectedId }) => {
+export const DeleteGroupModal: FC<Props> = ({ close, title }) => {
   const [deleteGroup, { isSuccess }] = useDeleteGroupMutation();
   const [deleteToDo] = useDeleteToDoMutation();
-  const { data: dataGroup } = useGetGroupsQuery();
+  const { data } = useGetGroupsQuery();
   const dispatch = useAppDispatch();
-  // const toDos: number[] = dataGroup?.data.map((e) => e.attributes.to_dos.data.map((f) => f.id));
+  const selectedGroupId = useAppSelector(({ idGroupToDo }) => idGroupToDo.idGroup);
 
   const handleDeleteGroup = async () => {
-    if (!dataGroup) {
+    if (!data) {
       return;
     }
 
-    const toDos = dataGroup?.data?.find((group) => group.id == selectedId)?.attributes.to_dos.data.map((todo) => todo.id);
+    const todoGroup = data?.data.find((group) => group.id == selectedGroupId);
+
+    const toDos = todoGroup?.attributes.to_dos.data.map((todo) => todo.id);
 
     if (!toDos) {
       return;
     }
-    console.log("dataGroup", toDos);
 
     await Promise.all(toDos?.map((todo) => deleteToDo(todo).unwrap()));
-    await deleteGroup(selectedId);
+    await deleteGroup(selectedGroupId);
     dispatch(setIdGroup(null));
 
     isSuccess && close();

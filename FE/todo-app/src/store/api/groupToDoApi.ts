@@ -5,7 +5,7 @@ export const groupApi = appApi.injectEndpoints({
   endpoints: (builder) => ({
     getGroups: builder.query<GetGroupResponse, void>({
       query: () => ({
-        url: "api/to-do-groups?populate=*",
+        url: "api/to-do-groups?populate=deep,3",
         method: "GET",
       }),
       providesTags: (result) => (result ? [{ type: "Group" }] : []),

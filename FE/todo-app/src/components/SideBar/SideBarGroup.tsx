@@ -16,7 +16,7 @@ type Props = {
 export const SideBarGroup: FC<Props> = ({ title, idGroup }) => {
   const dispatch = useAppDispatch();
   const titleLetter = title?.charAt(0).toUpperCase();
-  const selectedGroupId = useAppSelector(({ idGroupToDo }) => idGroupToDo.idGroup); // TODO vytahnout dole neposilat to tam
+  const selectedGroupId = useAppSelector(({ idGroupToDo }) => idGroupToDo.idGroup);
   const { isOpen, open, close } = useModal();
 
   const handleClick = () => {
@@ -39,6 +39,6 @@ export const SideBarGroup: FC<Props> = ({ title, idGroup }) => {
       )}
     </div>
   ) : (
-    createPortal(<DeleteGroupModal close={close} title={title} selectedId={selectedGroupId} />, document.body)
+    createPortal(<DeleteGroupModal close={close} title={title} />, document.body)
   );
 };

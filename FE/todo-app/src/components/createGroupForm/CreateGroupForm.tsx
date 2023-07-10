@@ -6,6 +6,7 @@ import { useCreateGroupMutation } from "@/store/api/groupToDoApi";
 import { Input } from "../formComponents/Input";
 import { Button } from "../formComponents/Button";
 import { Error } from "../formComponents/Error";
+import { to_do } from "@/types/ToDo";
 
 type Props = {
   open: boolean;
@@ -14,6 +15,7 @@ type Props = {
 
 export type CreateGroupToDoType = {
   title: string;
+  to_dos: to_do[];
 };
 
 export const CreateGroupForm: FC<Props> = ({ open, closeModal }) => {
@@ -27,9 +29,11 @@ export const CreateGroupForm: FC<Props> = ({ open, closeModal }) => {
     const dataInput = {
       data: {
         title: data.title,
+        to_dos: [],
       },
     };
     createGroup(dataInput);
+
     closeModal();
   };
 

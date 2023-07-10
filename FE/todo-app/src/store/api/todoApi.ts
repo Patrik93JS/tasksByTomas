@@ -5,7 +5,7 @@ export const todoApi = appApi.injectEndpoints({
   endpoints: (builder) => ({
     getToDos: builder.query<GetToDosResponse, void>({
       query: () => ({
-        url: "api/to-dos?populate=*",
+        url: "api/to-dos?populate=deep,3",
         method: "GET",
       }),
       providesTags: (result) => (result ? [{ type: "ToDo" }] : []),
@@ -16,7 +16,7 @@ export const todoApi = appApi.injectEndpoints({
         method: "POST",
         body,
       }),
-      invalidatesTags: [{ type: "ToDo" }],
+      invalidatesTags: [{ type: "ToDo" }, { type: "Group" }],
     }),
     updateToDo: builder.mutation<UpdateToDoResponse, UpdateToDoRequest>({
       query: ({ id, ...rest }) => ({
