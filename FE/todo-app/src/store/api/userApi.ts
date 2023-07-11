@@ -3,9 +3,9 @@ import { GetUserResponse } from "@/types/User";
 
 export const userApi = appApi.injectEndpoints({
   endpoints: (builder) => ({
-    getUsers: builder.query<GetUserResponse, void>({
-      query: () => ({
-        url: "api/users",
+    getUser: builder.query<GetUserResponse, void>({
+      query: (id) => ({
+        url: `api/user/${id}`,
         method: "GET",
       }),
       providesTags: (result) => (result ? [{ type: "User" }] : []),
@@ -13,4 +13,4 @@ export const userApi = appApi.injectEndpoints({
   }),
 });
 
-//TODO mozna neni potreba
+export const { useGetUserQuery } = userApi;
